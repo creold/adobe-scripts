@@ -2,6 +2,7 @@
 [![Behance](https://img.shields.io/badge/Behance-%40creold-0055FF.svg)](https://behance.net/creold) [![Dribbble](https://img.shields.io/badge/Dribbble-%40creold-DF3A7A.svg)](https://dribbble.com/creold) [![Instagram](https://img.shields.io/badge/Instagram-%40serg_osokin-8034B2.svg)](https://www.instagram.com/serg_osokin/)
 
 This is a collection of some little scripts or drafts has not included in the [catalog].
+
 [catalog]: https://github.com/creold/illustrator-scripts
 
 ### How to run scripts
@@ -38,10 +39,41 @@ If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or 
   <img width="160" height="49" src="img/yandex_badge.gif" >
 </a>
 
-## Adobe Photoshop Scripts
+## Adobe Illustrator Scripts
 
-### SaveAll.jsx
+### GrayscaleToOpacity.jsx
+Convert selection colors to Grayscale and set identical Opacity value.
+
+![GrayscaleToOpacity](ai/GrayscaleToOpacity.gif) 
+
+### OpacityMaskClip.jsx
+The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
+
+![OpacityMaskClip](ai/OpacityMaskClip.gif)  
+
+### RenameArtboardAsLayer.jsx
+The script renames each Artboard by the custom name of Layer with the first visible unlocked item on it.
+
+![RenameArtboardAsLayer](ai/RenameArtboardAsLayer.gif)  
+
+### RenameArtboardAsSize.jsx
+The script names the artboard by its size in pixels.
+
+![RenameArtboardAsSize](ai/RenameArtboardAsSize.gif)  
+
+### RenameArtboardAsTopObj.jsx
+The script renames each Artboard by the custom name of the first visible unlocked item on it.
+
+![RenameArtboardAsTopObj](ai/RenameArtboardAsTopObj.gif)  
+
+### SaveAllDocs.jsx
 Save all opened docs in one click.
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>  
+
+## Adobe Photoshop Scripts
 
 ### ClearLayer.jsx
 Simple script to clear layers content.
@@ -53,7 +85,10 @@ Generate JPG preview image from active document. Supports multiple saving with a
 
 ![ClearLayer](ps/GeneratePreview.gif) 
 
-<a href="https://github.com/creold/adobe-scripts/archive/master.zip">
+### SaveAll.jsx
+Save all opened docs in one click.
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
   <img width="160" height="49" src="img/download.png">
 </a> 
 

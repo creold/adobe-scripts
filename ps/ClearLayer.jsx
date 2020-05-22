@@ -1,19 +1,19 @@
 /*
-ClearLayer.jsx for Adobe Photoshop
-Description: Simple script to clear layers content.
-Date: June, 2019
-Author: Sergey Osokin, email: hi@sergosokin.ru
-============================================================================
-Donate (optional): If you find this script helpful and want to support me 
-by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-============================================================================
-NOTICE:
-This script is provided "as is" without warranty of any kind.
-============================================================================
-Released under the MIT license.
-http://opensource.org/licenses/mit-license.php
-============================================================================
-Check other author's scripts: https://github.com/creold
+  ClearLayer.jsx for Adobe Photoshop
+  Description: Simple script to clear layers content.
+  Date: June, 2019
+  Author: Sergey Osokin, email: hi@sergosokin.ru
+  ============================================================================
+  Donate (optional): If you find this script helpful and want to support me 
+  by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
+  ============================================================================
+  NOTICE:
+  This script is provided "as is" without warranty of any kind.
+  ============================================================================
+  Released under the MIT license.
+  http://opensource.org/licenses/mit-license.php
+  ============================================================================
+  Check other author's scripts: https://github.com/creold
 */
 
 //@target photoshop
@@ -23,10 +23,9 @@ app.bringToFront();
 function main() {
   var doc = app.activeDocument;
   var selLayers = getSelectedLayersIdx();
-  for (var a in selLayers) {
-    makeActiveByIndex(selLayers[a], false);
-    try { doc.activeLayer.clear(); } 
-    catch (e) {}
+  for (var i = 0; i < selLayers.length; i++) {
+    makeActiveByIndex(selLayers[i], false);
+    doc.activeLayer.clear();
   }
 }
 
