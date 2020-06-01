@@ -61,6 +61,11 @@ The script names the artboard by its size in pixels.
 
 ![RenameArtboardAsSize](ai/RenameArtboardAsSize.gif)  
 
+### RoundCoordinates.jsx
+The script rounds the coordinates of the center of the object. Works with document units.
+
+![RoundCoordinates](ai/RoundCoordinates.gif)  
+
 ### RenameArtboardAsTopObj.jsx
 The script renames each Artboard by the custom name of the first visible unlocked item on it.
 
