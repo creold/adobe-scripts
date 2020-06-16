@@ -26,7 +26,7 @@ if (app.documents.length > 0) {
 // Generate Action
 var setName = 'OpacityMask',
     actionName = 'ActivateClip',
-    actionPath = Folder.temp;
+    actionPath = Folder.myDocuments;
 
 var actionStr =  [
     '/version 3',
