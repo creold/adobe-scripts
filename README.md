@@ -46,6 +46,11 @@ Convert selection colors to Grayscale and set identical Opacity value.
 
 ![GrayscaleToOpacity](ai/GrayscaleToOpacity.gif) 
 
+### ObjectsCounter.jsx
+Counts the number of selected objects.
+
+![ObjectsCounter](ai/ObjectsCounter.gif)  
+
 ### OpacityMaskClip.jsx
 The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
 
