@@ -46,6 +46,11 @@ Convert selection colors to Grayscale and set identical Opacity value.
 
 ![GrayscaleToOpacity](ai/GrayscaleToOpacity.gif) 
 
+### NumeratesPoints.jsx
+Numerates selected points and marks them with colored circles.
+
+![NumeratesPoints](ai/NumeratesPoints.gif) 
+
 ### ObjectsCounter.jsx
 Counts the number of selected objects.
 
