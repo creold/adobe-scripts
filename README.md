@@ -46,47 +46,88 @@ Convert selection colors to Grayscale and set identical Opacity value.
 
 ![GrayscaleToOpacity](ai/GrayscaleToOpacity.gif) 
 
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
+
 ### NumeratesPoints.jsx
 Numerates selected points and marks them with colored circles.
 
 ![NumeratesPoints](ai/NumeratesPoints.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
 
 ### ObjectsCounter.jsx
 Counts the number of selected objects.
 
 ![ObjectsCounter](ai/ObjectsCounter.gif)  
 
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
+
 ### OpacityMaskClip.jsx
 The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
 
 ![OpacityMaskClip](ai/OpacityMaskClip.gif)  
 
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
+
 ### RenameArtboardAsLayer.jsx
 The script renames each Artboard by the custom name of Layer with the first visible unlocked item on it.
 
-![RenameArtboardAsLayer](ai/RenameArtboardAsLayer.gif)  
+![RenameArtboardAsLayer](ai/RenameArtboardAsLayer.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
 
 ### RenameArtboardAsSize.jsx
 The script names the artboard by its size in pixels. If you don't want save Artboard name, but replace with his size, change `var SAVE_NAME = true;` in the script file to `false`   
 
-![RenameArtboardAsSize](ai/RenameArtboardAsSize.gif)  
+![RenameArtboardAsSize](ai/RenameArtboardAsSize.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
 
 ### RoundCoordinates.jsx
 The script rounds the coordinates of the center of the object. Works with document units.
 
-![RoundCoordinates](ai/RoundCoordinates.gif)  
+![RoundCoordinates](ai/RoundCoordinates.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
 
 ### RenameArtboardAsTopObj.jsx
 The script renames each Artboard by the custom name of the first visible unlocked item on it.
 
-![RenameArtboardAsTopObj](ai/RenameArtboardAsTopObj.gif)  
+![RenameArtboardAsTopObj](ai/RenameArtboardAsTopObj.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
+
+### ReverseGradientColor.jsx
+Reverse of gradient colors and their opacity. Does not reverse the location of color stops. If the gradient is copied with a Eyedropper Tool (I), the Illustrator thinks it is a single gradient. Use the Reverse Gradient button in the Gradient panel
+
+![ReverseGradient](ai/ReverseGradientColor.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
 
 ### SaveAllDocs.jsx
 Save all opened docs in one click.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
   <img width="160" height="49" src="img/download.png">
-</a>  
+</a>
 
 ## Adobe Photoshop Scripts
 
@@ -95,10 +136,18 @@ Simple script to clear layers content.
 
 ![ClearLayer](ps/ClearLayer.gif) 
 
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
+  <img width="160" height="49" src="img/download.png">
+</a> 
+
 ### GeneratePreview.jsx
 Generate JPG preview image from active document. Supports multiple saving with auto-numbering. If you want to change JPG size, edit number in script file `var jpegSizeMax = 1200;` .
 
 ![ClearLayer](ps/GeneratePreview.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
+  <img width="160" height="49" src="img/download.png">
+</a> 
 
 ### SaveAll.jsx
 Save all opened docs in one click.
