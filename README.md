@@ -67,7 +67,7 @@ The script renames each Artboard by the custom name of Layer with the first visi
 ![RenameArtboardAsLayer](ai/RenameArtboardAsLayer.gif)  
 
 ### RenameArtboardAsSize.jsx
-The script names the artboard by its size in pixels.
+The script names the artboard by its size in pixels. If you don't want save Artboard name, but replace with his size, change `var SAVE_NAME = true;` in the script file to `false`   
 
 ![RenameArtboardAsSize](ai/RenameArtboardAsSize.gif)  
 
