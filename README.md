@@ -27,15 +27,15 @@ I recommend the [Scripshon Trees] panel. In it you can specify which folder your
 [Scripshon Trees]: https://exchange.adobe.com/creativecloud.details.15873.scripshon-trees.html
 
 ### Donate (optional)
-If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or [Yandex Money] 🙂  
+If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or [ЮMoney] *ex-Yandex.Money* 🙂  
 
 [PayPal]: https://paypal.me/osokin/2usd
-[Yandex Money]: https://money.yandex.ru/to/410011149615582
+[ЮMoney]: https://yoomoney.ru/to/410011149615582
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="img/paypal_badge.gif" >
 </a>  
 
-<a href="https://money.yandex.ru/to/410011149615582">
+<a href="https://yoomoney.ru/to/410011149615582">
   <img width="160" height="49" src="img/yandex_badge.gif" >
 </a>
 
@@ -45,6 +45,15 @@ If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or 
 Convert selection colors to Grayscale and set identical Opacity value.
 
 ![GrayscaleToOpacity](ai/GrayscaleToOpacity.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="img/download.png">
+</a>
+
+### MoveArtboards.jsx
+Script for moving artboards range with artwork along the X and Y axis.
+
+![MoveArtboards](ai/MoveArtboards.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
   <img width="160" height="49" src="img/download.png">
@@ -114,7 +123,7 @@ The script renames each Artboard by the custom name of the first visible unlocke
 </a>
 
 ### ReverseGradientColor.jsx
-Reverse of gradient colors and their opacity. Does not reverse the location of color stops. If the gradient is copied with a Eyedropper Tool (I), the Illustrator thinks it is a single gradient. Use the Reverse Gradient button in the Gradient panel
+Reverse the order of gradient colors and their opacity. Does not reverse the locations of color stops. If a gradient is copied from another object with the Eyedropper Tool (I), the Illustrator will think that they have the same gradient. Use the Reverse Gradient button in the Gradient panel instead then.   
 
 ![ReverseGradient](ai/ReverseGradientColor.gif)
 
