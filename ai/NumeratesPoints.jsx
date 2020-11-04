@@ -25,7 +25,7 @@ $.localize = true; // Enabling automatic localization
 // Global variables
 var SCRIPT_NAME = 'Numerates Points',
     SETTINGS_FILE = {
-      name: SCRIPT_NAME.replace(/\s/g, '_') + '_data.json',
+      name: SCRIPT_NAME.replace(/\s/g, '_') + '_data.ini',
       folder: Folder.myDocuments + '/Adobe Scripts/'
     };
 
@@ -212,28 +212,26 @@ function main() {
       numGroup.name = GROUPS_NAME[1];
     }
 
-    // for (var i = 0; i < selPaths.length; i++) {
-      for (var j = 0; j < selPoints.length; j++) {
-        var currPoint = selPoints[j];
-        var marker = doc.pathItems.ellipse(
-            currPoint.anchor[1] + radius, // Top
-            currPoint.anchor[0] - radius, // Left
-            2 * radius, // Width
-            2 * radius, // Height
-            false, // Reversed
-            true); // Inscribed
-        marker.stroked = false;
-        marker.fillColor = newColor;
-        marker.move(markerGroup, ElementPlacement.PLACEATBEGINNING);
-        
-        var text = doc.textFrames.add();
-            text.textRange.characterAttributes.size = fontSize;
-            text.contents = count++;
-            text.top = currPoint.anchor[1] + topMargin;
-            text.left = currPoint.anchor[0] + leftMargin;
-            text.move(numGroup, ElementPlacement.PLACEATBEGINNING);          
-      }
-    // }
+    for (var j = 0; j < selPoints.length; j++) {
+      var currPoint = selPoints[j];
+      var marker = doc.pathItems.ellipse(
+          currPoint.anchor[1] + radius, // Top
+          currPoint.anchor[0] - radius, // Left
+          2 * radius, // Width
+          2 * radius, // Height
+          false, // Reversed
+          true); // Inscribed
+      marker.stroked = false;
+      marker.fillColor = newColor;
+      marker.move(markerGroup, ElementPlacement.PLACEATBEGINNING);
+      
+      var text = doc.textFrames.add();
+          text.textRange.characterAttributes.size = fontSize;
+          text.contents = count++;
+          text.top = currPoint.anchor[1] + topMargin;
+          text.left = currPoint.anchor[0] + leftMargin;
+          text.move(numGroup, ElementPlacement.PLACEATBEGINNING);          
+    }
   }
   
   cancel.onClick = function() {
@@ -260,10 +258,10 @@ function main() {
     if(!Folder(SETTINGS_FILE.folder).exists) Folder(SETTINGS_FILE.folder).create();
     var $file = new File(SETTINGS_FILE.folder + SETTINGS_FILE.name),
         data = [
-          numVal.text,
-          radius,
-          leftMargin,
-          topMargin,
+          count,
+          radVal.text,
+          leftVal.text,
+          topVal.text,
           fontSize,
           isPreview.value
         ].toString();
