@@ -29,7 +29,7 @@ var SCRIPT_NAME = 'Move Artboards',
       folder: Folder.myDocuments + '/Adobe Scripts/'
     },
     AI_VER = parseInt(app.version),
-    TEMP_GROUP = 'ARTBOARD_NUMBERS',
+    TMP_LAYER_NAME = 'ARTBOARD_NUMBERS',
     ALL_BOARDS_PH = '%all',
     L_KEYWORD = '%isLocked',
     H_KEYWORD = '%isHidden',
@@ -136,7 +136,15 @@ function main() {
     abInput.text = ALL_BOARDS_PH;
   });
 
-  drawArtboardsNames();
+  dialog.onClose = function() {
+    // Remove temp layer with artboards numbers
+    try {
+      var layerToRm = doc.layers.getByName(TMP_LAYER_NAME);
+      layerToRm.remove();
+    } catch (e) {}
+  }
+
+  drawAbNumbers();
   app.redraw();
 
   ok.onClick = okClick;
@@ -188,12 +196,6 @@ function main() {
   dialog.center();
   dialog.show();
 
-  // Remove temp group with artboards numbers
-  try {
-    var groupToRm = doc.groupItems.getByName(TEMP_GROUP);
-    groupToRm.remove();
-  } catch (e) {}
-
   function keyListener(item) {
     item.addEventListener('keydown', function (kd) {
       var step;
@@ -238,15 +240,17 @@ function main() {
   }
 }
 
-function drawArtboardsNames() {
+function drawAbNumbers() {
   var doc = app.activeDocument,
-      tempGroup;
-  
+      lockState = doc.layers[0].locked,
+      visState = doc.layers[0].visible,
+      tmpLayer;
+    
   try {
-    tempGroup = doc.groupItems.getByName(TEMP_GROUP);
+    tmpLayer = doc.layers.getByName(TMP_LAYER_NAME);
   } catch (e) {
-    tempGroup = doc.activeLayer.groupItems.add();
-    tempGroup.name = TEMP_GROUP;
+    tmpLayer = doc.layers.add();
+    tmpLayer.name = TMP_LAYER_NAME;
   }
   
   for (var i = 0; i < doc.artboards.length; i++)  {
@@ -262,7 +266,7 @@ function drawArtboardsNames() {
       currAb.artboardRect[0],
       currAb.artboardRect[1]
     ];
-    label.move(tempGroup, ElementPlacement.PLACEATBEGINNING);
+    label.move(tmpLayer, ElementPlacement.PLACEATBEGINNING);
   }
 }
 
