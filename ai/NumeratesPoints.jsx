@@ -3,19 +3,23 @@
   Description: Numerates selected points and marks them with colored circles.
   Date: August, 2020
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ============================================================================
+
   Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
-  ============================================================================
+  
+  Versions:
+  0.1 Initial version.
+  0.2 Disabled Preview only for Illustrator v.24.3, because Illustrator crashes 
+
   Donate (optional): If you find this script helpful, you can buy me a coffee
                     via PayPal http://www.paypal.me/osokin/usd
-  ============================================================================
+
   NOTICE:
   This script is provided "as is" without warranty of any kind.
   Free to use, not for sale.
-  ============================================================================
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ============================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
@@ -24,6 +28,8 @@ $.localize = true; // Enabling automatic localization
 
 // Global variables
 var SCRIPT_NAME = 'Numerates Points',
+    SCRIPT_VERSION = 'v.0.2',
+    AI_VER = app.version.slice(0, 4),
     SETTINGS_FILE = {
       name: SCRIPT_NAME.replace(/\s/g, '_') + '_data.ini',
       folder: Folder.myDocuments + '/Adobe Scripts/'
@@ -34,7 +40,7 @@ var LANG_ERR_DOC = { en: 'Error\nOpen a document and try again.', ru: 'Ошиб�
     LANG_ERR_SELECT = { en: 'Error\nPlease select atleast one object.', ru: 'Ошибка\nВыделите хотя бы 1 объект.'},
     LANG_NUM = { en: 'Start number', ru: 'Стартовый номер'},
     LANG_RAD = { en: 'Marker radius', ru: 'Радиус маркера'},
-    LANG_FONT = { en: 'Font size, pt', ru: 'Размер шрифта, пт'},
+    LANG_FONT = { en: 'Font size, pt', ru: 'Размер шрифта, pt'},
     LANG_LEFT = { en: 'Left margin', ru: 'Отступ слева'},
     LANG_TOP = { en: 'Top margin', ru: 'Отступ сверху'},
     LANG_OK = { en: 'Ok', ru: 'Готово'},
@@ -50,8 +56,8 @@ var DEF_СIRCLE_RAD = 4,
     DEF_IS_PREVIEW = true,
     DEF_DLG_OPACITY = 0.9,  // UI window opacity. Range 0-1
     FIELD_SIZE = [0, 0, 50, 30],
-    TITLE_SIZE = [0, 0, 120, 30],
-    GROUPS_NAME = ['Point_Markers', 'Point_Numbers'],
+    TITLE_SIZE = [0, 0, 130, 30],
+    GROUPS_NAME = ['Points_Markers', 'Points_Numbers'],
     isUndo = false,
     tempPath; // For fix Preview bug
 
@@ -69,28 +75,15 @@ function main() {
   var doc = app.activeDocument,
       selPaths = [],
       selPoints = [],
-      newColor,
-      count = radius = leftMargin = topMargin = fontSize = 0;
+      markerColor = setMarkerColor(),
+      markerGroup, numGroup,
+      count, radius, leftMargin, topMargin, fontSize;
  
   getPaths(selection, selPaths);
   getPoints(selPaths, selPoints);
 
-  // Set color for marker
-  if (activeDocument.documentColorSpace === DocumentColorSpace.RGB) {
-    newColor = new RGBColor();
-    newColor.red = 0;
-    newColor.green = 0;
-    newColor.blue = 0;
-  } else {
-    newColor = new CMYKColor();
-    newColor.cyan = 0;
-    newColor.magenta = 0;
-    newColor.yellow = 0;
-    newColor.black = 100;
-  }
-
   // Main Window
-  var dialog = new Window('dialog', SCRIPT_NAME, undefined);
+  var dialog = new Window('dialog', SCRIPT_NAME + ' ' + SCRIPT_VERSION, undefined);
       dialog.orientation = 'column';
       dialog.alignChildren = ['fill','center'];
       dialog.opacity = DEF_DLG_OPACITY;
@@ -127,7 +120,10 @@ function main() {
       grpPreview.orientation = 'row';
       grpPreview.alignChildren = ['center','center'];
   var isPreview = grpPreview.add('checkbox', undefined, LANG_PREVIEW);
-      isPreview.value = DEF_IS_PREVIEW;
+      // It's sad. Illustrator 2020 24.3 crashes when we run app.undo() to the textFrame
+      // The Preview will not be available on this version of Adobe Illustrator
+      if (AI_VER == '24.3') isPreview.enabled = false;
+      else isPreview.value = DEF_IS_PREVIEW;
 
   var copyright = dialog.add('statictext', undefined, '\u00A9 github.com/creold');
       copyright.justify = 'center';
@@ -135,10 +131,20 @@ function main() {
 
   loadSettings();
   
+  if (isPreview.value) previewStart();
+  
   // Event listener for isPreview
-  if (isPreview.value) { previewStart(); }
+  isPreview.onClick = previewStart;
   numVal.onChanging = radVal.onChanging = fontVal.onChanging = isPreview.onClick = previewStart;
   leftVal.onChanging = topVal.onChanging = previewStart;
+
+  radVal.onChange = function() {
+    if (radVal.text * 1 <= 0 || isNaN(radVal.text)) radVal.text = DEF_СIRCLE_RAD;
+  }
+
+  fontVal.onChange = function() {
+    if (fontVal.text * 1 <= 0 || isNaN(fontVal.text)) fontVal.text = DEF_FONT_SIZE;
+  }
 
   // Use Up / Down arrow keys (+ Shift) for change value
   for (var i = 0; i < grpInput.children.length; i++) {
@@ -148,30 +154,30 @@ function main() {
       if (kd.keyName == 'Down') {
         this.text = Number(this.text) - step;
         kd.preventDefault();
+        previewStart();
       }
       if (kd.keyName == 'Up') {
         this.text = Number(this.text) + step;
         kd.preventDefault();
+        previewStart();
       }
-      previewStart();
     });
   }
   
   ok.onClick = okClick;
 
   function okClick() {
-    if (isPreview.value && isUndo) { app.undo(); }
+    if (isPreview.value && isUndo) app.undo();
     start();
     isUndo = false;
-    saveSettings();
     dialog.close();
   }
 
   function previewStart() {
     try {
       if (isPreview.value) {
-        if (isUndo) { app.undo(); }
-        else { isUndo = true; }
+        if (isUndo) app.undo();
+        else isUndo = true;
         start();
         app.redraw();
       } else if (isUndo) {
@@ -189,8 +195,8 @@ function main() {
     topMargin = convertInputToNum(topVal.text, DEF_MARGIN_Y);
     fontSize  = convertInputToNum(fontVal.text, DEF_FONT_SIZE);
 
-    if (fontSize <= 0) { fontSize = DEF_FONT_SIZE; }
-    if (radius <= 0) { radius = DEF_СIRCLE_RAD; }
+    if (fontSize <= 0) fontSize = DEF_FONT_SIZE;
+    if (radius <= 0) radius = DEF_СIRCLE_RAD;
 
     // Convert value to document units
     radius = convertUnits(radius + getDocUnit(), 'px');
@@ -199,38 +205,16 @@ function main() {
 
     tempPath = doc.activeLayer.pathItems.add();
     tempPath.name = 'Temp_Path';
-        
+       
     // Add new groups for numbers and markers
-    var markerGroup, numGroup;
-    try {
-      markerGroup = doc.groupItems.getByName(GROUPS_NAME[0]);
-      numGroup = doc.groupItems.getByName(GROUPS_NAME[1]);
-    } catch (e) {
-      markerGroup = doc.activeLayer.groupItems.add();
-      numGroup = doc.activeLayer.groupItems.add();
-      markerGroup.name = GROUPS_NAME[0];
-      numGroup.name = GROUPS_NAME[1];
-    }
+    markerGroup = addGroup(GROUPS_NAME[0]);
+    numGroup = addGroup(GROUPS_NAME[1]);
 
     for (var j = 0; j < selPoints.length; j++) {
       var currPoint = selPoints[j];
-      var marker = doc.pathItems.ellipse(
-          currPoint.anchor[1] + radius, // Top
-          currPoint.anchor[0] - radius, // Left
-          2 * radius, // Width
-          2 * radius, // Height
-          false, // Reversed
-          true); // Inscribed
-      marker.stroked = false;
-      marker.fillColor = newColor;
-      marker.move(markerGroup, ElementPlacement.PLACEATBEGINNING);
-      
-      var text = doc.textFrames.add();
-          text.textRange.characterAttributes.size = fontSize;
-          text.contents = count++;
-          text.top = currPoint.anchor[1] + topMargin;
-          text.left = currPoint.anchor[0] + leftMargin;
-          text.move(numGroup, ElementPlacement.PLACEATBEGINNING);          
+      drawMarker(currPoint, radius, markerColor, markerGroup);
+      drawNumber(currPoint, fontSize, count, topMargin, leftMargin, numGroup);
+      count++;       
     }
   }
   
@@ -246,8 +230,11 @@ function main() {
         isUndo = false;
       }
     } catch (e) {}
+
     tempPath.remove();
     app.redraw();
+    saveSettings();
+
     return true;
   }
   
@@ -282,11 +269,30 @@ function main() {
         leftVal.text = $main[2];
         topVal.text = $main[3];
         fontVal.text = $main[4];
-        isPreview.value = ($main[5] === 'true');
+        isPreview.value = ($main[5] === 'true' && AI_VER !== '24.3');
       } catch (e) {}
       $file.close();
     }
   }
+}
+
+// Set color for marker. Default Black
+function setMarkerColor() {
+  var newColor;
+  if (activeDocument.documentColorSpace === DocumentColorSpace.RGB) {
+    newColor = new RGBColor();
+    newColor.red = 0;
+    newColor.green = 0;
+    newColor.blue = 0;
+  } else {
+    newColor = new CMYKColor();
+    newColor.cyan = 0;
+    newColor.magenta = 0;
+    newColor.yellow = 0;
+    newColor.black = 100;
+  }
+
+  return newColor;
 }
 
 function getPaths(item, arr) {
@@ -320,6 +326,24 @@ function getPoints(paths, arr) {
       }
     }
   }
+}
+
+function addGroup(name) {
+  var lblGroup;
+  try {
+    lblGroup = activeDocument.groupItems.getByName(name);
+  } catch (e) {
+    lblGroup = activeDocument.activeLayer.groupItems.add();
+    lblGroup.name = name;
+  }
+
+  return lblGroup;
+}
+
+function convertInputToNum(str, def) {
+  str = str.replace(',', '.');
+  if (isNaN(1 * str) || str.replace(/\s/g, '').length == 0) { return def; }
+  else { return 1 * str; }
 }
 
 // Units conversion. Thanks for help Alexander Ladygin (https://github.com/alexander-ladygin)
@@ -382,12 +406,35 @@ function convertUnits(value, newUnit) {
   return parseFloat(value);
 }
 
-function convertInputToNum(str, def) {
-  str = str.replace(',', '.');
-  if (isNaN(1 * str) || str.replace(/\s/g, '').length == 0) { return def; }
-  else { return 1 * str; }
+function drawMarker(point, radius, color, container) {
+  var marker = activeDocument.pathItems.ellipse(
+      point.anchor[1] + radius, // Top
+      point.anchor[0] - radius, // Left
+      2 * radius, // Width
+      2 * radius, // Height
+      false, // Reversed
+      true); // Inscribed
+  marker.stroked = false;
+  marker.fillColor = color;
+  marker.move(container, ElementPlacement.PLACEATBEGINNING);
+}
+
+function drawNumber(point, font, num, top, left, container) {
+  var numStr = activeDocument.textFrames.add();
+  numStr.textRange.characterAttributes.size = font;
+  numStr.contents = num;
+  numStr.top = point.anchor[1] + top;
+  numStr.left = point.anchor[0] + left;
+  numStr.move(container, ElementPlacement.PLACEATBEGINNING);   
+}
+
+// Debugging
+function showError(err) {
+  alert(err + ': on line ' + err.line, 'Script Error', true);
 }
 
 try {
   main();
-} catch (e) {}
+} catch (e) {
+  // showError(e);
+}
