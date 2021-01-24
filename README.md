@@ -122,6 +122,15 @@ The script renames each Artboard by the custom name of the first visible unlocke
   <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
 </a>
 
+### ResizeOnLargerSide.jsx
+Resize of the selected objects to the specified amount on the larger side. Works with document units.   
+
+![ResizeOnLargerSide](https://i.ibb.co/1bSj1kC/Resize-On-Larger-Side.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+</a>
+
 ### ReverseGradientColor.jsx
 Reverse the order of gradient colors and their opacity. Does not reverse the locations of color stops. If a gradient is copied from another object with the Eyedropper Tool (I), the Illustrator will think that they have the same gradient. Use the Reverse Gradient button in the Gradient panel instead then.   
 
