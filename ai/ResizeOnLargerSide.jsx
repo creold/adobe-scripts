@@ -36,12 +36,12 @@ function main () {
           ratio;
 
       // Calc ratio
-      if (obj.typename === 'TextArtItem') {
+      if (obj.typename === 'TextFrame') {
         var txtClone = obj.duplicate(),
             txtOutline = txtClone.createOutline(),
             txtLargeSide = txtOutline.height > txtOutline.width ? txtOutline.height : txtOutline.width; 
-        ratio = 100 / (txtLargeSide / goal.height);
-        outline.remove();
+        ratio = 100 / (txtLargeSide / newSize);
+        txtOutline.remove();
       } else {
         ratio = 100 / (largeSide / newSize);
       }
