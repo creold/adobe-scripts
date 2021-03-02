@@ -242,8 +242,6 @@ function main() {
 
 function drawAbNumbers() {
   var doc = app.activeDocument,
-      lockState = doc.layers[0].locked,
-      visState = doc.layers[0].visible,
       tmpLayer;
     
   try {
