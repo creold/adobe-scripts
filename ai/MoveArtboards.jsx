@@ -124,12 +124,12 @@ function main() {
 
   loadSettings();
 
-  // Change listeners
+  // Event listeners
   inputX.onChange = inputY.onChange = function() {
-    this.text = convertInputToNum(this.text, DEF_SHIFT);
+    this.text = convertToNum(this.text, DEF_SHIFT);
   }
-  keyListener(inputX);
-  keyListener(inputY);
+  shiftInputNumValue(inputX);
+  shiftInputNumValue(inputY);
   abDescr.addEventListener('mousedown', function(){
     inputX.active = true;
     dialog.update();
@@ -196,7 +196,7 @@ function main() {
   dialog.center();
   dialog.show();
 
-  function keyListener(item) {
+  function shiftInputNumValue(item) {
     item.addEventListener('keydown', function (kd) {
       var step;
       ScriptUI.environment.keyboardState['shiftKey'] ? step = 10 : step = 1;
@@ -384,13 +384,16 @@ function moveArtboard(board, items, shiftX, shiftY) {
   }
 }
 
-function convertInputToNum(str, def) {
-  str = str.replace(',', '.');
-  if (isNaN(str * 1) || str.replace(/\s/g, '').length == 0) { 
-    return def; 
-  } else { 
-    return str * 1; 
-  }
+function convertToNum(str, def) {
+  // Remove unnecessary characters
+  str = str.replace(/,/g, '.').replace(/[^\d.-]/g, '');
+  // Remove duplicate Point
+  str = str.split('.');
+  str = str[0] ? str[0] + '.' + str.slice(1).join('') : '';
+  // Remove duplicate Minus
+  str = str.substr(0, 1) + str.substr(1).replace(/-/g, '');
+  if (isNaN(str) || str.length == 0) return parseFloat(def);
+  return parseFloat(str);
 }
 
 // Save information about locked & hidden pageItems

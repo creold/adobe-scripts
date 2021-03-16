@@ -138,30 +138,23 @@ function main() {
   numVal.onChanging = radVal.onChanging = fontVal.onChanging = isPreview.onClick = previewStart;
   leftVal.onChanging = topVal.onChanging = previewStart;
 
+  numVal.onChange = function() { this.text = convertToNum(this.text, DEF_START_NUM); }
+  leftVal.onChange = function() { this.text = convertToNum(this.text, DEF_MARGIN_X); }
+  topVal.onChange = function() { this.text = convertToNum(this.text, DEF_MARGIN_Y); }
+
   radVal.onChange = function() {
-    if (radVal.text * 1 <= 0 || isNaN(radVal.text)) radVal.text = DEF_СIRCLE_RAD;
+    this.text = convertToNum(this.text, DEF_СIRCLE_RAD);
+    if (this.text * 1 <= 0) this.text = DEF_СIRCLE_RAD;
   }
 
   fontVal.onChange = function() {
-    if (fontVal.text * 1 <= 0 || isNaN(fontVal.text)) fontVal.text = DEF_FONT_SIZE;
+    this.text = convertToNum(this.text, DEF_FONT_SIZE);
+    if (this.text * 1 <= 0) this.text = DEF_FONT_SIZE;
   }
 
   // Use Up / Down arrow keys (+ Shift) for change value
   for (var i = 0; i < grpInput.children.length; i++) {
-    grpInput.children[i].addEventListener('keydown', function (kd) {
-      var step;
-      ScriptUI.environment.keyboardState['shiftKey'] ? step = 10 : step = 1;
-      if (kd.keyName == 'Down') {
-        this.text = Number(this.text) - step;
-        kd.preventDefault();
-        previewStart();
-      }
-      if (kd.keyName == 'Up') {
-        this.text = Number(this.text) + step;
-        kd.preventDefault();
-        previewStart();
-      }
-    });
+    shiftInputNumValue(grpInput.children[i]);
   }
   
   ok.onClick = okClick;
@@ -189,11 +182,11 @@ function main() {
   }
 
   function start() {
-    count = convertInputToNum(numVal.text, DEF_START_NUM);
-    radius = convertInputToNum(radVal.text, DEF_СIRCLE_RAD);
-    leftMargin = convertInputToNum(leftVal.text, DEF_MARGIN_X);
-    topMargin = convertInputToNum(topVal.text, DEF_MARGIN_Y);
-    fontSize  = convertInputToNum(fontVal.text, DEF_FONT_SIZE);
+    count = convertToNum(numVal.text, DEF_START_NUM);
+    radius = convertToNum(radVal.text, DEF_СIRCLE_RAD);
+    leftMargin = convertToNum(leftVal.text, DEF_MARGIN_X);
+    topMargin = convertToNum(topVal.text, DEF_MARGIN_Y);
+    fontSize  = convertToNum(fontVal.text, DEF_FONT_SIZE);
 
     if (fontSize <= 0) fontSize = DEF_FONT_SIZE;
     if (radius <= 0) radius = DEF_СIRCLE_RAD;
@@ -274,6 +267,23 @@ function main() {
       $file.close();
     }
   }
+
+  function shiftInputNumValue(item) {
+    item.addEventListener('keydown', function (kd) {
+      var step;
+      ScriptUI.environment.keyboardState['shiftKey'] ? step = 10 : step = 1;
+      if (kd.keyName == 'Down') {
+        this.text = Number(this.text) - step;
+        kd.preventDefault();
+        previewStart();
+      }
+      if (kd.keyName == 'Up') {
+        this.text = Number(this.text) + step;
+        kd.preventDefault();
+        previewStart();
+      }
+    });
+  }
 }
 
 // Set color for marker. Default Black
@@ -340,10 +350,16 @@ function addGroup(name) {
   return lblGroup;
 }
 
-function convertInputToNum(str, def) {
-  str = str.replace(',', '.');
-  if (isNaN(1 * str) || str.replace(/\s/g, '').length == 0) { return def; }
-  else { return 1 * str; }
+function convertToNum(str, def) {
+  // Remove unnecessary characters
+  str = str.replace(/,/g, '.').replace(/[^\d.-]/g, '');
+  // Remove duplicate Point
+  str = str.split('.');
+  str = str[0] ? str[0] + '.' + str.slice(1).join('') : '';
+  // Remove duplicate Minus
+  str = str.substr(0, 1) + str.substr(1).replace(/-/g, '');
+  if (isNaN(str) || str.length == 0) return parseFloat(def);
+  return parseFloat(str);
 }
 
 // Units conversion. Thanks for help Alexander Ladygin (https://github.com/alexander-ladygin)

@@ -19,45 +19,52 @@
 
 //@target illustrator
 
-var DEF_SIZE = 512;
+var DEF_SIZE = 512,
+    PREF_BNDS = app.preferences.getBooleanPreference('includeStrokeInBounds');
 
 function main () {
-  if (selection.length > 0 && selection.typename != 'TextRange') {
+  if (selection.length > 0 && selection.typename !== 'TextRange') {
     var newSize = prompt('Enter the size on the larger side (' + getDocUnit() + ')', DEF_SIZE);
     
     // Prepare value
-    if (newSize === null) return false;
-    newSize = convertInputToNum(newSize, DEF_SIZE);
+    if (newSize.length === 0) return;
+    newSize = convertToNum(newSize, DEF_SIZE);
+    if (newSize == 0) return;
     newSize = convertUnits(newSize + getDocUnit(), 'px');
 
     for (var i = 0; i < selection.length; i++) {
-      var obj = selection[i],
-          largeSide = obj.height >= obj.width ? obj.height : obj.width,
-          ratio;
+      var item = selection[i],
+          bnds, width, height, largeSide, ratio;
 
       // Calc ratio
-      if (obj.typename === 'TextFrame') {
-        var txtClone = obj.duplicate(),
-            txtOutline = txtClone.createOutline(),
-            txtLargeSide = txtOutline.height > txtOutline.width ? txtOutline.height : txtOutline.width; 
-        ratio = 100 / (txtLargeSide / newSize);
+      if (item.typename === 'TextFrame') {
+        var txtClone = item.duplicate(),
+            txtOutline = txtClone.createOutline();
+        bnds = PREF_BNDS ? txtOutline.visibleBounds : txtOutline.geometricBounds;
         txtOutline.remove();
       } else {
-        ratio = 100 / (largeSide / newSize);
+        bnds = PREF_BNDS ? item.visibleBounds : item.geometricBounds;
       }
 
-      obj.resize(ratio, ratio, true, true, true, true, ratio);
+      width = bnds[2] - bnds[0];
+      height = bnds[3] - bnds[1];
+      largeSide = (height >= width) ? height : width;
+      ratio = 100 / (largeSide / newSize);
+
+      // X, Y, Positions, FillPatterns, FillGradients, StrokePattern, LineWidths
+      item.resize(ratio, ratio, true, true, true, true, ratio);
     }
   }
 }
 
-function convertInputToNum(str, def) {
-  str = str.replace(',', '.');
-  if (isNaN(str * 1) || str.replace(/\s/g, '').length == 0) { 
-    return def; 
-  } else { 
-    return str * 1; 
-  }
+function convertToNum(str, def) {
+  // Remove unnecessary characters
+  str = str.replace(/,/g, '.').replace(/[^\d.]/g, '');
+  // Remove duplicate Point
+  str = str.split('.');
+  str = str[0] ? str[0] + '.' + str.slice(1).join('') : '';
+  if (isNaN(str) || str.length == 0) return parseFloat(def);
+  return parseFloat(str);
 }
 
 // Units conversion. Thanks for help Alexander Ladygin (https://github.com/alexander-ladygin)
