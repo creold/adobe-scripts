@@ -7,12 +7,20 @@
   
   Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
   
-  Donate (optional): If you find this script helpful, you can buy me a coffee
-                     via PayPal http://www.paypal.me/osokin/usd
-  
+  Versions:
+  0.1 Initial version
+  0.1.1 Minor improvements
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
+  Free to use, not for sale
   
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
@@ -24,6 +32,7 @@
 $.localize = true; // Enabling automatic localization
 
 var SCRIPT_NAME = 'Move Artboards',
+    SCRIPT_VERSION = 'v.0.1.1',
     SETTINGS_FILE = {
       name: SCRIPT_NAME.replace(/\s/g, '_') + '_data.ini',
       folder: Folder.myDocuments + '/Adobe Scripts/'
@@ -37,32 +46,33 @@ var SCRIPT_NAME = 'Move Artboards',
     CNVS_SIZE = 16383, // Illustrator canvas max bounds, px
     DEF_SHIFT = 100, // Units px
     DEF_RANGE = '1, 2-4',
-    DEF_DLG_OPACITY = 0.9,  // UI window opacity. Range 0-1
+    DLG_OPACITY = 0.95,  // UI window opacity. Range 0-1
     UI_MARGIN = [10, 15, 10, 10];
 
 // EN-RU localized messages
-var LANG_ERR_DOC = { en: 'Error\nOpen a document and try again.', ru: 'Ошибка\nОткройте документ и запустите скрипт.'},
-    LANG_ERR_VER = { en: 'Error\nSorry, script only works in Illustrator CS6 and later.',
-                     ru: 'Ошибка\nСкрипт работает в Illustrator CS6 и выше.'},
+var LANG_ERR_DOC = { en: 'Error\nOpen a document and try again', 
+                      ru: 'Ошибка\nОткройте документ и запустите скрипт' },
+    LANG_ERR_VER = { en: 'Error\nSorry, script only works in Illustrator CS6 and later',
+                     ru: 'Ошибка\nСкрипт работает в Illustrator CS6 и выше' },
     LANG_ERR_OVER_CNVS_1 = { en: 'Error\nMoved artboards go beyond canvas\nbounds from the ', 
                          ru: 'Ошибка\nПеремещаемые артборды выходят за пределы\nхолста Иллюстратора с '},
     LANG_ERR_OVER_CNVS_2 = { en: 'side.', 
                          ru: 'стороны.'},
-    LANG_ERR_OVER_L = { en: 'LEFT, ', ru: 'ЛЕВОЙ, '},
-    LANG_ERR_OVER_R = { en: 'RIGHT, ', ru: 'ПРАВОЙ, '},
-    LANG_ERR_OVER_T = { en: 'TOP, ', ru: 'ВЕРХНЕЙ, '},
-    LANG_ERR_OVER_B = { en: 'BOTTOM, ', ru: 'НИЖНЕЙ, '},
+    LANG_ERR_OVER_L = { en: 'LEFT, ', ru: 'ЛЕВОЙ, ' },
+    LANG_ERR_OVER_R = { en: 'RIGHT, ', ru: 'ПРАВОЙ, ' },
+    LANG_ERR_OVER_T = { en: 'TOP, ', ru: 'ВЕРХНЕЙ, ' },
+    LANG_ERR_OVER_B = { en: 'BOTTOM, ', ru: 'НИЖНЕЙ, ' },
     LANG_ERR_OVER_TIP = { en: '\n\nTry smaller distance or different range', 
-                          ru: '\n\nПопробуйте меньший сдвиг или другой диапазон'},
+                          ru: '\n\nПопробуйте меньший сдвиг или другой диапазон' },
     LANG_SLOW = { en: 'The document has over ' + OVER_OBJ + ' objects. The script can run slowly',
-                  ru: 'В документе свыше ' + OVER_OBJ + ' объектов. Скрипт может работать медленно'},
-    LANG_RANGE = { en: 'Artboards range', ru: 'Номера артбордов'},
-    LANG_RANGE_DESCR = { en: ALL_BOARDS_PH + ' - all artboards', ru: ALL_BOARDS_PH + ' - все артборды'},
-    LANG_SHIFT = { en: 'Shift', ru: 'Смещение'},
-    LANG_X = { en: 'X axis', ru: 'Ось X'},
-    LANG_Y = { en: 'Y axis', ru: 'Ось Y'},
-    LANG_OK = { en: 'Ok', ru: 'Готово'},
-    LANG_CANCEL = { en: 'Cancel', ru: 'Отмена'};
+                  ru: 'В документе свыше ' + OVER_OBJ + ' объектов. Скрипт может работать медленно' },
+    LANG_RANGE = { en: 'Artboards range', ru: 'Номера артбордов' },
+    LANG_RANGE_DESCR = { en: ALL_BOARDS_PH + ' - all artboards', ru: ALL_BOARDS_PH + ' - все артборды' },
+    LANG_SHIFT = { en: 'Shift', ru: 'Смещение' },
+    LANG_X = { en: 'X axis', ru: 'Ось X' },
+    LANG_Y = { en: 'Y axis', ru: 'Ось Y' },
+    LANG_OK = { en: 'Ok', ru: 'Готово' },
+    LANG_CANCEL = { en: 'Cancel', ru: 'Отмена' };
 
 function main() {
   if (AI_VER < 16) {
@@ -70,7 +80,7 @@ function main() {
     return;
   } 
 
-  if (app.documents.length == 0) {
+  if (documents.length == 0) {
     alert(LANG_ERR_DOC);
     return;
   }
@@ -79,10 +89,10 @@ function main() {
       currBoardIdx = doc.artboards.getActiveArtboardIndex();
 
   // Main Window
-  var dialog = new Window('dialog', SCRIPT_NAME, undefined);
+  var dialog = new Window('dialog', SCRIPT_NAME + ' ' + SCRIPT_VERSION);
       dialog.orientation = 'column';
       dialog.alignChildren = ['fill','center'];
-      dialog.opacity = DEF_DLG_OPACITY;
+      dialog.opacity = DLG_OPACITY;
 
   // Value fields
   var abPanel = dialog.add('panel', undefined, LANG_RANGE);
@@ -164,7 +174,7 @@ function main() {
     abRangeToMove = abRangeToMove.split(','); // Split string to array
     abRangeArr = getArtboardsRange(abRangeToMove);
     
-    saveItemsState(); // Save information about locked & hidden pageItems
+    saveItemsState(L_KEYWORD, H_KEYWORD); // Save information about locked & hidden pageItems
     
     // Check coordinates limit before moving
     extremeCoord = collectExtremeCoordinates(abRangeArr);
@@ -176,7 +186,7 @@ function main() {
 
     var abItems = collectArtboardItems(abRangeArr);
 
-    for (var i = 0; i < abRangeArr.length; i++) {
+    for (var i = 0, rLen = abRangeArr.length; i < rLen; i++) {
       var idx = abRangeArr[i];
       try {
         moveArtboard(doc.artboards[idx], abItems[i][0], shiftX, shiftY);
@@ -185,7 +195,7 @@ function main() {
     
     // Restore locked & hidden pageItems
     selection = null;
-    restoreItemsState();
+    restoreItemsState(L_KEYWORD, H_KEYWORD);
 
     doc.artboards.setActiveArtboardIndex(currBoardIdx);
     
@@ -251,7 +261,7 @@ function drawAbNumbers() {
     tmpLayer.name = TMP_LAYER_NAME;
   }
   
-  for (var i = 0; i < doc.artboards.length; i++)  {
+  for (var i = 0, absLen = doc.artboards.length; i < absLen; i++)  {
     doc.artboards.setActiveArtboardIndex(i);
     var currAb = doc.artboards[i],
         abWidth = currAb.artboardRect[2] - currAb.artboardRect[0],
@@ -271,7 +281,7 @@ function drawAbNumbers() {
 function collectArtboardItems(abRange) {
   var doc = app.activeDocument;
   var obj = [];
-  for (var i = 0; i < abRange.length; i++) {
+  for (var i = 0, rLen = abRange.length; i < rLen; i++) {
     idx = abRange[i];
     doc.artboards.setActiveArtboardIndex(idx);
     doc.selectObjectsOnActiveArtboard();
@@ -302,7 +312,7 @@ function collectExtremeCoordinates(abRange) {
   fakePath.remove();
   
   // Get coordinates for each artboard in the range
-  for (var i = 0; i < abRange.length; i++) {
+  for (var i = 0, rLen = abRange.length; i < rLen; i++) {
     idx = abRange[i];
     var thisAbRect = doc.artboards[idx].artboardRect;
     
@@ -378,7 +388,7 @@ function moveArtboard(board, items, shiftX, shiftY) {
   ];
   
   // Move objects from array
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0, iLen = items.length; i < iLen; i++) {
     var pos = isDocCoords ? items[i].position : doc.convertCoordinate(items[i].position, docCoordSystem, abCoordSystem);
     items[i].position = [pos[0] + shiftX, pos[1] + shiftY];
   }
@@ -397,17 +407,17 @@ function convertToNum(str, def) {
 }
 
 // Save information about locked & hidden pageItems
-function saveItemsState() {
-  for (var i = 0; i < activeDocument.pageItems.length; i++) {
+function saveItemsState(lKey, hKey) {
+  for (var i = 0, piLen = activeDocument.pageItems.length; i < piLen; i++) {
     var currItem = activeDocument.pageItems[i];
+    var regexp = new RegExp(lKey + '|' + hKey, 'gi');
+    currItem.note = currItem.note.replace(regexp, '');
     if (currItem.locked) {
-      if (currItem.note == '') { currItem.note = L_KEYWORD; }
-      else { currItem.note += L_KEYWORD; }
+      currItem.note += lKey;
       currItem.locked = false;
     }
     if (currItem.hidden) {
-      if (currItem.note == '') { currItem.note = H_KEYWORD; }
-      else { currItem.note += H_KEYWORD; }
+      currItem.note += hKey;
       currItem.hidden = false;
     }
   }
@@ -415,17 +425,17 @@ function saveItemsState() {
 }
 
 // Restoring locked & hidden pageItems
-function restoreItemsState() {
-  for (var i = 0; i < activeDocument.pageItems.length; i++) {
+function restoreItemsState(lKey, hKey) {
+  var regexp = new RegExp(lKey + '|' + hKey, 'gi');
+  for (var i = 0, piLen = activeDocument.pageItems.length; i < piLen; i++) {
     var currItem = activeDocument.pageItems[i];
-    if (currItem.note.match(L_KEYWORD) != null) {
+    if (currItem.note.match(lKey) != null) {
       currItem.locked = true;
-      currItem.note = currItem.note.replace(L_KEYWORD, '');
     }
-    if (currItem.note.match(H_KEYWORD) != null) {
+    if (currItem.note.match(hKey) != null) {
       currItem.hidden = true;
-      currItem.note = currItem.note.replace(H_KEYWORD, '');
     }
+    currItem.note = currItem.note.replace(regexp, '');
   }
 }
 
@@ -434,7 +444,7 @@ function getArtboardsRange(rawArr) {
 
   forEach(rawArr, function(e) {
     if (e.match(ALL_BOARDS_PH) != null) {
-      for (var i = 0; i <= app.activeDocument.artboards.length; i++) {
+      for (var i = 0, absLen = app.activeDocument.artboards.length; i <= absLen; i++) {
         parsedStr.push(i);
       }
       return;
@@ -454,7 +464,7 @@ function getArtboardsRange(rawArr) {
 
 
 function forEach(collection, fn) {
-	for (var i = 0; i < collection.length; i++) {
+	for (var i = 0, cLen = collection.length; i < cLen; i++) {
 		fn(collection[i]);
 	}
 }
@@ -462,19 +472,19 @@ function forEach(collection, fn) {
 // Search for common elements in arrays
 function intersect(arr1, arr2) {
   var tmp = [];
-  for (var i = 0; i < arr1.length; i++) {
+  for (var i = 0, arrLen = arr1.length; i < arrLen; i++) {
     if (arr2.indexOf(i + 1) !== -1) tmp.push(i);
   }
   return tmp;
-};
+}
 
 // Polyfill indexOf() for Array
 Array.prototype.indexOf = function (item) {
-  for (var i = 0 ; i < this.length; i++ ) {
+  for (var i = 0, len = this.length; i < len; i++ ) {
     if ( this[i] === item ) return i;
   }
   return -1;
-};
+}
 
 // Units conversion. Thanks for help Alexander Ladygin (https://github.com/alexander-ladygin)
 function getDocUnit() {
@@ -536,6 +546,13 @@ function convertUnits(value, newUnit) {
   return parseFloat(value);
 }
 
+// Debugging
+function showError(err) {
+  alert(err + ': on line ' + err.line, 'Script Error', true);
+}
+
 try {
   main();
-} catch (e) {}
+} catch (e) {
+  // showError(e);
+}

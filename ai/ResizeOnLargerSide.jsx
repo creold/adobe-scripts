@@ -6,11 +6,17 @@
   
   Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
   
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
-  Tested with Adobe Illustrator CC 2019 (Mac/Win).
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
-  
+  Free to use, not for sale
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
   
@@ -23,37 +29,45 @@ var DEF_SIZE = 512,
     PREF_BNDS = app.preferences.getBooleanPreference('includeStrokeInBounds');
 
 function main () {
-  if (selection.length > 0 && selection.typename !== 'TextRange') {
-    var newSize = prompt('Enter the size on the larger side (' + getDocUnit() + ')', DEF_SIZE);
-    
-    // Prepare value
-    if (newSize.length === 0) return;
-    newSize = convertToNum(newSize, DEF_SIZE);
-    if (newSize == 0) return;
-    newSize = convertUnits(newSize + getDocUnit(), 'px');
+  if (!documents.length) {
+    alert('Error\nOpen a document and try again');
+    return;
+  }
 
-    for (var i = 0; i < selection.length; i++) {
-      var item = selection[i],
-          bnds, width, height, largeSide, ratio;
+  if (selection.length == 0 || selection.typename == 'TextRange') {
+    alert('Error\nPlease select atleast one object');
+    return;
+  }
 
-      // Calc ratio
-      if (item.typename === 'TextFrame') {
-        var txtClone = item.duplicate(),
-            txtOutline = txtClone.createOutline();
-        bnds = PREF_BNDS ? txtOutline.visibleBounds : txtOutline.geometricBounds;
-        txtOutline.remove();
-      } else {
-        bnds = PREF_BNDS ? item.visibleBounds : item.geometricBounds;
-      }
+  var newSize = prompt('Enter the size on the larger side (' + getDocUnit() + ')', DEF_SIZE);
+  
+  // Prepare value
+  if (newSize.length === 0) return;
+  newSize = convertToNum(newSize, DEF_SIZE);
+  if (newSize == 0) return;
+  newSize = convertUnits(newSize + getDocUnit(), 'px');
 
-      width = bnds[2] - bnds[0];
-      height = bnds[3] - bnds[1];
-      largeSide = (height >= width) ? height : width;
-      ratio = 100 / (largeSide / newSize);
+  for (var i = 0, selLen = selection.length; i < selLen; i++) {
+    var item = selection[i],
+        bnds, width, height, largeSide, ratio;
 
-      // X, Y, Positions, FillPatterns, FillGradients, StrokePattern, LineWidths
-      item.resize(ratio, ratio, true, true, true, true, ratio);
+    // Calc ratio
+    if (item.typename === 'TextFrame') {
+      var txtClone = item.duplicate(),
+          txtOutline = txtClone.createOutline();
+      bnds = PREF_BNDS ? txtOutline.visibleBounds : txtOutline.geometricBounds;
+      txtOutline.remove();
+    } else {
+      bnds = PREF_BNDS ? item.visibleBounds : item.geometricBounds;
     }
+
+    width = bnds[2] - bnds[0];
+    height = bnds[3] - bnds[1];
+    largeSide = (height >= width) ? height : width;
+    ratio = 100 / (largeSide / newSize);
+
+    // X, Y, Positions, FillPatterns, FillGradients, StrokePattern, LineWidths
+    item.resize(ratio, ratio, true, true, true, true, ratio);
   }
 }
 
@@ -127,8 +141,13 @@ function convertUnits(value, newUnit) {
   return parseFloat(value);
 }
 
+// Debugging
+function showError(err) {
+  alert(err + ': on line ' + err.line, 'Script Error', true);
+}
+
 try {
-  if (app.documents.length > 0) {
-    main();
-  }
-} catch (e) {}
+  main();
+} catch (e) {
+  // showError(e);
+}

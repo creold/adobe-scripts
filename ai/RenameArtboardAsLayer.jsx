@@ -3,35 +3,42 @@
   Description: The script renames each Artboard by the custom name of Layer with the first visible unlocked item on it.
   Date: October, 2019
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ============================================================================
-  Donate (optional): If you find this script helpful and want to support me 
-  by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-  ============================================================================
+
+  Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  ============================================================================
+  Free to use, not for sale
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ============================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
 //@target illustrator
 
 function main() {
-    if (app.documents.length == 0) {
-        alert('Error: \nOpen a document and try again.');
+    if (!documents.length) {
+        alert('Error: \nOpen a document and try again');
         return;
     }
     var doc = app.activeDocument;
 
     // Create Main Window
-    var win = new Window('dialog', 'Rename Artboard As Layer', undefined);
-    win.orientation = 'column';
-    win.alignChild = ['fill', 'fill'];
+    var dialog = new Window('dialog', 'Rename Artboard As Layer', undefined);
+    dialog.orientation = 'column';
+    dialog.alignChild = ['fill', 'fill'];
 
     // Buttons
-    var btns = win.add('group');
+    var btns = dialog.add('group');
     btns.alignChild = ['fill', 'fill'];
     btns.orientation = 'row';
     var allBtn = btns.add('button', undefined, 'All');
@@ -39,14 +46,14 @@ function main() {
     currBtn.active = true;
 
     allBtn.onClick = function() {
-        for (var i = 0; i < doc.artboards.length; i++) {
+        for (var i = 0, len = doc.artboards.length; i < len; i++) {
             doc.artboards.setActiveArtboardIndex(i);
             var currArtboard = doc.artboards[i];
             doc.selectObjectsOnActiveArtboard(); // Get all items on current Artboard
             renameArtboard(currArtboard, doc);
         }
         doc.selection = null;
-        win.close();
+        dialog.close();
     }
 
     currBtn.onClick = function() {
@@ -54,11 +61,11 @@ function main() {
         doc.selectObjectsOnActiveArtboard(); // Get all items on current Artboard
         renameArtboard(doc.artboards[i], doc);
         doc.selection = null;
-        win.close();
+        dialog.close();
     }
 
-    win.center();
-    win.show();
+    dialog.center();
+    dialog.show();
 }
 
 function renameArtboard(board, doc) {
@@ -75,15 +82,13 @@ function renameArtboard(board, doc) {
     }
 }
 
+// Debugging
 function showError(err) {
-    if (confirm(scriptName + ': an unknown error has occurred.\n' +
-            'Would you like to see more information?', true, 'Unknown Error')) {
-        alert(err + ': on line ' + err.line, 'Script Error', true);
-    }
+  alert(err + ': on line ' + err.line, 'Script Error', true);
 }
 
 try {
-    main();
+  main();
 } catch (e) {
-    // showError(e);
+  // showError(e);
 }

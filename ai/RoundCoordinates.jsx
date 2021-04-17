@@ -3,46 +3,64 @@
   Description: The script rounds the coordinates of the center of the object
   Date: June, 2020
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ============================================================================
-  Donate (optional): If you find this script helpful and want to support me 
-  by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-  ============================================================================
+
+  Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  ============================================================================
+  Free to use, not for sale
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ============================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
 //@target illustrator
 
-var doc = app.activeDocument;
-
-var centerX = centerY = deltaX = deltaY = 0;
-
-for (var i = 0; i < doc.selection.length; i++) {
-  var currItem = doc.selection[i],
-      currBoundsPX = currItem.geometricBounds,
-      currBounds = [];
-  
-  for (var j = 0; j < currBoundsPX.length; j++) {
-    currBounds.push(convertUnits(currBoundsPX[j], getDocUnit()));
+function main() {
+  if (!documents.length) {
+    alert('Error\nOpen a document and try again');
+    return;
   }
 
-  // Find the coordinates of the geometric center
-  centerX = currBounds[0] + (currBounds[2] - currBounds[0]) / 2;
-  centerY = currBounds[1] + (currBounds[3] - currBounds[1]) / 2;
+  if (selection.length == 0 || selection.typename == 'TextRange') {
+    alert('Error\nPlease select atleast one object');
+    return;
+  }
 
-  deltaX = Math.round(centerX) - centerX;
-  deltaY = Math.round(centerY) - centerY;
+  var doc = app.activeDocument;
+  var centerX = centerY = deltaX = deltaY = 0;
 
-  deltaX = convertUnits(deltaX + getDocUnit(), 'px');
-  deltaY = convertUnits(deltaY + getDocUnit(), 'px');
+  for (var i = 0, selLen = selection.length; i < selLen; i++) {
+    var currItem = selection[i],
+        currBoundsPX = currItem.geometricBounds,
+        currBounds = [];
+    
+    for (var j = 0; j < currBoundsPX.length; j++) {
+      currBounds.push(convertUnits(currBoundsPX[j], getDocUnit()));
+    }
 
-  // Change item position
-  currItem.position = new Array(currBoundsPX[0] + deltaX, currBoundsPX[1] + deltaY);
+    // Find the coordinates of the geometric center
+    centerX = currBounds[0] + (currBounds[2] - currBounds[0]) / 2;
+    centerY = currBounds[1] + (currBounds[3] - currBounds[1]) / 2;
+
+    deltaX = Math.round(centerX) - centerX;
+    deltaY = Math.round(centerY) - centerY;
+
+    deltaX = convertUnits(deltaX + getDocUnit(), 'px');
+    deltaY = convertUnits(deltaY + getDocUnit(), 'px');
+
+    // Change item position
+    currItem.position = new Array(currBoundsPX[0] + deltaX, currBoundsPX[1] + deltaY);
+  }
 }
 
 // Units conversion
@@ -103,4 +121,15 @@ function convertUnits(value, newUnit) {
       value = parseFloat(value) * 25.4;
   }
   return parseFloat(value);
+}
+
+// Debugging
+function showError(err) {
+  alert(err + ': on line ' + err.line, 'Script Error', true);
+}
+
+try {
+  main();
+} catch (e) {
+  // showError(e);
 }

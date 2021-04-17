@@ -3,26 +3,23 @@
   Description: The script fills in the name of artboard its size
   Date: September, 2018
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ==========================================================================================
-  Installation:
-  1. Place script in:
-     Win (32 bit): C:\Program Files (x86)\Adobe\Adobe Illustrator [vers.]\Presets\en_GB\Scripts\
-     Win (64 bit): C:\Program Files\Adobe\Adobe Illustrator [vers.] (64 Bit)\Presets\en_GB\Scripts\
-     Mac OS: <hard drive>/Applications/Adobe Illustrator [vers.]/Presets.localized/en_GB/Scripts
-  2. Restart Illustrator
-  3. Choose File > Scripts > RenameArtboardAsSize
-  ============================================================================
-  Donate (optional): If you find this script helpful and want to support me 
-  by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-  ==========================================================================================
+
+  Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
-  Tested with Adobe Illustrator CC 2017-2019 (Mac).
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
-  ==========================================================================================
+  Free to use, not for sale
+  
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ==========================================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
@@ -34,15 +31,15 @@ var SAVE_NAME = true, // Set false to overwrite the full name
     SPLIT = '_';
 
 function main() {
-  if (app.documents.length == 0) {
-    alert('Error: \nOpen a document and try again.');
+  if (!documents.length) {
+    alert('Error: \nOpen a document and try again');
     return;
   }
 
   var doc = app.activeDocument;
   var width, height, size;
 
-  for (var i = 0; i < doc.artboards.length; i++) {
+  for (var i = 0, len = doc.artboards.length; i < len; i++) {
     var currArtboard = doc.artboards[i];
     
     width = convertUnits(currArtboard.artboardRect[2] - currArtboard.artboardRect[0], getDocUnit());
@@ -127,6 +124,7 @@ function convertUnits(value, newUnit) {
   return parseFloat(value);
 }
 
+// Debugging
 function showError(err) {
   alert(err + ': on line ' + err.line, 'Script Error', true);
 }

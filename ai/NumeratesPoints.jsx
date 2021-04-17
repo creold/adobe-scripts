@@ -10,12 +10,16 @@
   0.1 Initial version.
   0.2 Disabled Preview only for Illustrator v.24.3, because Illustrator crashes 
 
-  Donate (optional): If you find this script helpful, you can buy me a coffee
-                    via PayPal http://www.paypal.me/osokin/usd
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
 
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
+  Free to use, not for sale
 
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
@@ -36,16 +40,18 @@ var SCRIPT_NAME = 'Numerates Points',
     };
 
 // EN-RU localized messages
-var LANG_ERR_DOC = { en: 'Error\nOpen a document and try again.', ru: 'Ошибка\nОткройте документ и запустите скрипт.'},
-    LANG_ERR_SELECT = { en: 'Error\nPlease select atleast one object.', ru: 'Ошибка\nВыделите хотя бы 1 объект.'},
-    LANG_NUM = { en: 'Start number', ru: 'Стартовый номер'},
-    LANG_RAD = { en: 'Marker radius', ru: 'Радиус маркера'},
-    LANG_FONT = { en: 'Font size, pt', ru: 'Размер шрифта, pt'},
-    LANG_LEFT = { en: 'Left margin', ru: 'Отступ слева'},
-    LANG_TOP = { en: 'Top margin', ru: 'Отступ сверху'},
-    LANG_OK = { en: 'Ok', ru: 'Готово'},
-    LANG_CANCEL = { en: 'Cancel', ru: 'Отмена'},
-    LANG_PREVIEW = { en: 'Preview', ru: 'Предпросмотр'};
+var LANG_ERR_DOC = { en: 'Error\nOpen a document and try again', 
+                      ru: 'Ошибка\nОткройте документ и запустите скрипт' },
+    LANG_ERR_SELECT = { en: 'Error\nPlease select atleast one object', 
+                        ru: 'Ошибка\nВыделите хотя бы 1 объект' },
+    LANG_NUM = { en: 'Start number', ru: 'Стартовый номер' },
+    LANG_RAD = { en: 'Marker radius', ru: 'Радиус маркера' },
+    LANG_FONT = { en: 'Font size, pt', ru: 'Размер шрифта, pt' },
+    LANG_LEFT = { en: 'Left margin', ru: 'Отступ слева' },
+    LANG_TOP = { en: 'Top margin', ru: 'Отступ сверху' },
+    LANG_OK = { en: 'Ok', ru: 'Готово' },
+    LANG_CANCEL = { en: 'Cancel', ru: 'Отмена' },
+    LANG_PREVIEW = { en: 'Preview', ru: 'Предпросмотр' };
 
 var DEF_СIRCLE_RAD = 4,
     DEF_FONT_SIZE = 6,
@@ -54,7 +60,7 @@ var DEF_СIRCLE_RAD = 4,
     DEF_START_NUM = 1, // Start numeration
     MIN_VALUE = 0,
     DEF_IS_PREVIEW = true,
-    DEF_DLG_OPACITY = 0.9,  // UI window opacity. Range 0-1
+    DLG_OPACITY = 0.95,  // UI window opacity. Range 0-1
     FIELD_SIZE = [0, 0, 50, 30],
     TITLE_SIZE = [0, 0, 130, 30],
     GROUPS_NAME = ['Points_Markers', 'Points_Numbers'],
@@ -67,7 +73,7 @@ function main() {
     return;
   }
 
-  if (selection.length == 0) {
+  if (selection.length == 0 || selection.typename == 'TextRange') {
     alert(LANG_ERR_SELECT);
     return;
   }
@@ -83,15 +89,15 @@ function main() {
   getPoints(selPaths, selPoints);
 
   // Main Window
-  var dialog = new Window('dialog', SCRIPT_NAME + ' ' + SCRIPT_VERSION, undefined);
+  var dialog = new Window('dialog', SCRIPT_NAME + ' ' + SCRIPT_VERSION);
       dialog.orientation = 'column';
-      dialog.alignChildren = ['fill','center'];
-      dialog.opacity = DEF_DLG_OPACITY;
+      dialog.alignChildren = ['fill', 'center'];
+      dialog.opacity = DLG_OPACITY;
 
   // Value fields
   var fieldGroup = dialog.add('group');
       fieldGroup.orientation = 'row';
-      fieldGroup.alignChildren = ['fill','center'];
+      fieldGroup.alignChildren = ['fill', 'center'];
 
   var grpTitle = fieldGroup.add('group');
       grpTitle.orientation = 'column';
@@ -203,7 +209,7 @@ function main() {
     markerGroup = addGroup(GROUPS_NAME[0]);
     numGroup = addGroup(GROUPS_NAME[1]);
 
-    for (var j = 0; j < selPoints.length; j++) {
+    for (var j = 0, pLen = selPoints.length; j < pLen; j++) {
       var currPoint = selPoints[j];
       drawMarker(currPoint, radius, markerColor, markerGroup);
       drawNumber(currPoint, fontSize, count, topMargin, leftMargin, numGroup);
@@ -211,9 +217,7 @@ function main() {
     }
   }
   
-  cancel.onClick = function() {
-    dialog.close();
-  }
+  cancel.onClick = function() { dialog.close(); }
 
   dialog.onClose = function () {
     try {
@@ -306,7 +310,7 @@ function setMarkerColor() {
 }
 
 function getPaths(item, arr) {
-  for (var i = 0; i < item.length; i++) {
+  for (var i = 0, iLen = item.length; i < iLen; i++) {
     var currItem = item[i];
     try {
       switch (currItem.typename) {
@@ -328,10 +332,10 @@ function getPaths(item, arr) {
 }
 
 function getPoints(paths, arr) {
-    for (var i = 0; i < paths.length; i++) {
+    for (var i = 0, len = paths.length; i < len; i++) {
     if (paths[i].pathPoints.length > 1) {
       var points = paths[i].pathPoints;
-      for (var j = 0; j < points.length; j++) {
+      for (var j = 0, pLen = points.length; j < pLen; j++) {
         if (points[j].selected == PathPointSelection.ANCHORPOINT) arr.push(points[j]);
       }
     }

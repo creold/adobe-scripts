@@ -3,48 +3,52 @@
   Description: Reverse of colors and their gradient transparency. Does not reverse the location of color stops.
   Date: August, 2020
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ============================================================================
+
   Installation: https://github.com/creold/illustrator-scripts#how-to-run-scripts
-  ============================================================================
-  Donate (optional): If you find this script helpful, you can buy me a coffee
-                    via PayPal http://www.paypal.me/osokin/usd
-  ============================================================================
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
-  ============================================================================
+  Free to use, not for sale
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ============================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
 //@target illustrator
 
 function main() {
-  if (app.documents.length == 0) {
-    alert('Error\nOpen a document and try again.');
-    return;
-  } else { 
-    var selPaths = [],
-        doc = app.activeDocument;
-  }
-
-  if (doc.selection.length == 0) {
-    alert('Error\nPlease select atleast one object.');
+  if (!documents.length) {
+    alert('Error\nOpen a document and try again');
     return;
   }
 
-  getPaths(doc.selection, selPaths);
+  if (selection.length == 0 || selection.typename == 'TextRange') {
+    alert('Error\nPlease select atleast one object');
+    return;
+  }
 
-  for (var i = 0; i < selPaths.length; i++) {
+  var doc = app.activeDocument,
+      selPaths = [];
+
+  getPaths(selection, selPaths);
+
+  for (var i = 0, selLen = selPaths.length; i < selLen; i++) {
     reverseGradientColor(selPaths[i]);
   }
 }
 
 // Get only Paths from selection
 function getPaths(item, arr) {
-  for (var i = 0; i < item.length; i++) {
+  for (var i = 0, iLen = item.length; i < iLen; i++) {
     var currItem = item[i];
     try {
       switch (currItem.typename) {

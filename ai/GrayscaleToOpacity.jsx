@@ -3,16 +3,21 @@
   Description: Convert selection colors to Grayscale and set identical Opacity value.
   Date: February, 2019
   Author: Sergey Osokin, email: hi@sergosokin.ru
-  ============================================================================
-  Donate (optional): If you find this script helpful and want to support me 
-  by shouting me a cup of coffee, you can by via PayPal http://www.paypal.me/osokin/usd
-  ============================================================================
+
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
+
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  ============================================================================
+  Free to use, not for sale
+
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
-  ============================================================================
+
   Check other author's scripts: https://github.com/creold
 */
 
@@ -25,14 +30,14 @@ app.executeMenuCommand('Colors7');
 
 getPaths(doc.selection, selArray);
 
-for (var i = 0; i < selArray.length; i++) {
+for (var i = 0, selLen = selArray.length; i < selLen; i++) {
   var grayValue = selArray[i].fillColor.gray;
   selArray[i].opacity = grayValue.toFixed(0);
 }
 
 // Get paths from selection
 function getPaths(item, arr) {
-  for (var i = 0; i < item.length; i++) {
+  for (var i = 0, iLen = item.length; i < iLen; i++) {
     var currItem = item[i];
     try {
       switch (currItem.typename) {

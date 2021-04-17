@@ -10,13 +10,18 @@
   0.1 Initial version
   0.2 To improve performance, the script only works with selected objects;
       Added progress bar
+  0.2.1 Minor improvements
   
-  Donate (optional): If you find this script helpful, you can buy me a coffee
-                     via PayPal http://www.paypal.me/osokin/usd
+  Donate (optional):
+  If you find this script helpful, you can buy me a coffee
+  - via PayPal http://www.paypal.me/osokin/usd
+  - via QIWI https://qiwi.com/n/OSOKIN​
+  - via YooMoney https://yoomoney.ru/to/410011149615582​
 
   NOTICE:
+  Tested with Adobe Illustrator CC 2018-2021 (Mac), 2021 (Win).
   This script is provided "as is" without warranty of any kind.
-  Free to use, not for sale.
+  Free to use, not for sale
   
   Released under the MIT license.
   http://opensource.org/licenses/mit-license.php
@@ -28,23 +33,23 @@
 $.localize = true; // Enabling automatic localization
 
 var SCRIPT_NAME = 'OpacityMaskClip',
-    SCRIPT_VERSION = '0.2',
+    SCRIPT_VERSION = 'v.0.2.1',
     AI_VER = parseInt(app.version),
-    ACTION_SET = 'OpacityMask',
+    ACTION_SET = SCRIPT_NAME + SCRIPT_VERSION,
     ACTION_NAME = 'ActivateClip',
     ACTION_PATH = Folder.myDocuments + '/Adobe Scripts/',
-    LANG_ERR_DOC = { en: 'Error\nOpen a document and try again.',
-                    ru: 'Ошибка\nОткройте документ и запустите скрипт.'},
-    LANG_ERR_VER = { en: 'Error\nSorry, script only works in Illustrator CS6 and later.',
-                    ru: 'Ошибка\nСкрипт работает в Illustrator CS6 и выше.'},
-    LANG_ERR_SEL = { en: 'Error\nPlease select at least 1 object and try again.',
-                    ru: 'Ошибка\nВыберите хотя бы один объект и запустите скрипт.'},
-    LANG_STATUS_TITLE = { en: 'Preparing objects', ru: 'Подготовка объектов'},
+    LANG_ERR_DOC = { en: 'Error\nOpen a document and try again',
+                    ru: 'Ошибка\nОткройте документ и запустите скрипт' },
+    LANG_ERR_VER = { en: 'Error\nSorry, script only works in Illustrator CS6 and later',
+                    ru: 'Ошибка\nСкрипт работает в Illustrator CS6 и выше' },
+    LANG_ERR_SEL = { en: 'Error\nPlease select at least 1 object and try again',
+                    ru: 'Ошибка\nВыберите хотя бы один объект и запустите скрипт' },
+    LANG_STATUS_TITLE = { en: 'Preparing objects', ru: 'Подготовка объектов' },
     PERCENTAGE = '%',
     OVER_ITEMS = 10; // When the amount of selected items, full-screen mode is enabled;
 
 function main() {
-  if (app.documents.length == 0) {
+  if (!documents.length) {
     alert(LANG_ERR_DOC);
     return;
   }
@@ -125,11 +130,11 @@ function main() {
   win.center();
   win.show();
   
-  for (var i = 0; i < selItems.length; i++) {
-    activateClip(selItems[i]);
+  for (var i = 0, sLen = selItems.length; i < sLen; i++) {
+    activateClip(selItems[i], ACTION_NAME, ACTION_SET);
 
     // Update Progress bar
-    progBar.value = parseInt((i / selItems.length) * 100);
+    progBar.value = parseInt((i / sLen) * 100);
     progLabel.text = progBar.value + PERCENTAGE;
     win.update();
   }
@@ -159,7 +164,7 @@ function ascii2Hex(hex) {
 }
 
 function getItems(items, arr) {
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0, len = items.length; i < len; i++) {
     var currItem = items[i];
     try {
       switch (currItem.typename) {
@@ -175,10 +180,10 @@ function getItems(items, arr) {
   }
 }
 
-function activateClip(item) {
+function activateClip(item, name, set) {
   try {
     item.selected = true;
-    app.doScript(ACTION_NAME, ACTION_SET);
+    app.doScript(name, set);
     selection = null;
     app.redraw();
   } catch (e) {}
