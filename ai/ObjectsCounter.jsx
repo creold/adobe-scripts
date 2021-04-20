@@ -32,7 +32,7 @@ getPaths(selection);
 alert(LANG_NUM + objCount);
 
 function getPaths(range) {
-  for (var i = 0, len = ; i < len; i++) {
+  for (var i = 0, len = range.length; i < len; i++) {
     try {
       switch (range[i].typename) {
         case 'GroupItem':
