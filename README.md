@@ -1,11 +1,13 @@
 ![header](https://i.ibb.co/zmcJrwq/header.png)
-[![Behance](https://img.shields.io/badge/Behance-%40creold-0055FF.svg)](https://behance.net/creold) [![Instagram](https://img.shields.io/badge/Instagram-%40serg_osokin-8034B2.svg)](https://www.instagram.com/serg_osokin/) [![Dribbble](https://img.shields.io/badge/-YouTube%20Channel-FF0000.svg)](https://www.youtube.com/channel/UC53QJ8BfkCQ3FVNQ-Ra3Tyw/videos)
+[![Behance](https://img.shields.io/badge/Behance-%40creold-0055FF.svg)](https://behance.net/creold) [![Instagram](https://img.shields.io/badge/Instagram-%40serg_osokin-8034B2.svg)](https://www.instagram.com/serg_osokin/) [![Dribbble](https://img.shields.io/badge/-YouTube%20Channel-FF0000.svg)](https://www.youtube.com/c/SergOsokinArt/videos)
+
+*Instructions in other languages: [English](README.md), [Русский](README.ru.md)*  
 
 This is a collection of some little scripts or drafts has not included in the [catalog].
 
 [catalog]: https://github.com/creold/illustrator-scripts
 
-### How to run scripts
+### ▶️ How to run scripts
 
 #### Variant 1 — Install 
 
@@ -22,12 +24,13 @@ This is a collection of some little scripts or drafts has not included in the [c
 Drag and drop the script file (JS or JSX) into Illustrator Window, Photoshop icon on dock (Mac), taskbar (Win).
 
 #### Variant 3 — Use extension
-I recommend the [Scripshon Trees] panel. In it you can specify which folder your script files are stored in.
+I recommend the [Scripshon Trees] or [LAScripts] panel. In it you can specify which folder your script files are stored in.
 
 [Scripshon Trees]: https://exchange.adobe.com/creativecloud.details.15873.scripshon-trees.html
+[LAScripts]: https://ladygin.pro/products/lascripts/
 
 ### Donate (optional)
-If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or [ЮMoney] *ex-Yandex.Money* 🙂  
+If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or [ЮMoney] 🙂  
 
 [PayPal]: https://paypal.me/osokin/2usd
 [ЮMoney]: https://yoomoney.ru/to/410011149615582
@@ -47,7 +50,7 @@ Convert selection colors to Grayscale and set identical Opacity value.
 ![GrayscaleToOpacity](https://i.ibb.co/DVfGtkz/Grayscale-To-Opacity.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### MoveArtboards.jsx
@@ -56,7 +59,7 @@ Script for moving artboards range with artwork along the X and Y axis.
 ![MoveArtboards](https://i.ibb.co/wrHTpTG/Move-Artboards.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### NumeratesPoints.jsx
@@ -65,7 +68,7 @@ Numerates selected points and marks them with colored circles.
 ![NumeratesPoints](https://i.ibb.co/bdJ8tvV/Numerates-Points.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### ObjectsCounter.jsx
@@ -74,7 +77,7 @@ Counts the number of selected objects.
 ![ObjectsCounter](https://i.ibb.co/bFd5k6p/Objects-Counter.gif)  
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### OpacityMaskClip.jsx
@@ -83,7 +86,7 @@ The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
 ![OpacityMaskClip](https://i.ibb.co/k0CBJKq/Opacity-Mask-Clip.gif)  
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### RenameArtboardAsLayer.jsx
@@ -92,7 +95,7 @@ The script renames each Artboard by the custom name of Layer with the first visi
 ![RenameArtboardAsLayer](https://i.ibb.co/9nk8Lqn/Rename-Artboard-As-Layer.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### RenameArtboardAsSize.jsx
@@ -101,7 +104,7 @@ The script names the artboard by its size in pixels. If you don't want save Artb
 ![RenameArtboardAsSize](https://i.ibb.co/54H4Jcm/Rename-Artboard-As-Size.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### RoundCoordinates.jsx
@@ -110,7 +113,7 @@ The script rounds the coordinates of the center of the object. Works with docume
 ![RoundCoordinates](https://i.ibb.co/jMy4YzT/Round-Coordinates.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### RenameArtboardAsTopObj.jsx
@@ -119,7 +122,7 @@ The script renames each Artboard by the custom name of the first visible unlocke
 ![RenameArtboardAsTopObj](https://i.ibb.co/4RGWddG/Rename-Artboard-As-Top-Obj.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### ResizeOnLargerSide.jsx
@@ -128,7 +131,7 @@ Resize of the selected objects to the specified amount on the larger side. Works
 ![ResizeOnLargerSide](https://i.ibb.co/1bSj1kC/Resize-On-Larger-Side.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### ReverseGradientColor.jsx
@@ -137,14 +140,23 @@ Reverse the order of gradient colors and their opacity. Does not reverse the loc
 ![ReverseGradient](https://i.ibb.co/Fg8nnHZ/Reverse-Gradient-Color.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ### SaveAllDocs.jsx
 Save all opened docs in one click.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
+
+### SyncGlobalColorsNames.jsx
+Syncs the names of the same global colors between open documents. After that, all changes will be saved.
+
+![SyncGlobalColorsNames](https://i.ibb.co/G9NRF7J/Sync-Global-Colors-Names.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
 ## Adobe Photoshop Scripts
@@ -155,7 +167,7 @@ Simple script to clear layers content.
 ![ClearLayer](https://i.ibb.co/hV7NFxB/Clear-Layer.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a> 
 
 ### GeneratePreview.jsx
@@ -164,27 +176,27 @@ Generate JPG preview image from active document. Supports multiple saving with a
 ![ClearLayer](https://i.ibb.co/HrcPNvs/Generate-Preview.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a> 
 
 ### SaveAll.jsx
 Save all opened docs in one click.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
-  <img width="160" height="49" src="https://i.ibb.co/VTBsw1c/download.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a> 
 
 #### Don't forget sharing link with a friend 🙂 
 
 
-## Contribute
+## 🤝 Contribute
 
 Found a bug? Please [submit a new issues](https://github.com/creold/adobe-scripts/issues) on GitHub.
 
 ### Contact
 Email <hi@sergosokin.ru>  
 
-### License
+### 📝 License
 
 All scripts is licensed under the MIT licence.  
 See the included LICENSE file for more details.
