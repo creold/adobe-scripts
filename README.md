@@ -198,5 +198,5 @@ Email <hi@sergosokin.ru>
 
 ### 📝 License
 
-All scripts is licensed under the MIT licence.  
-See the included LICENSE file for more details.
+All scripts is licensed under the MIT licence  
+See the included LICENSE file for more details

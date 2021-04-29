@@ -47,7 +47,7 @@ var SCRIPT = {
 // Main function
 function main() {
   if (!documents.length) {
-    alert(LANG_ERR_DOC);
+    alert(LANG.errDoc);
     return;
   }
 
