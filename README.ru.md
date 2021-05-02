@@ -28,20 +28,35 @@
 [Scripshon Trees]: https://exchange.adobe.com/creativecloud.details.15873.scripshon-trees.html
 [LAScripts]: https://ladygin.pro/products/lascripts/
 
-### Поддержка (по желанию)
-Вы можете поддержать мою работу над новыми скриптами и их распространение любой суммой через [PayPal] или [ЮMoney] *Яндекс.деньги* 🙂  
+### 💸 Поддержка (по желанию)
+Вы можете поддержать мою работу над новыми скриптами и их распространение любой суммой через [PayPal], [ЮMoney] или [Donatty] 🙂  
 
 [PayPal]: https://paypal.me/osokin/2usd
 [ЮMoney]: https://yoomoney.ru/to/410011149615582
+[Donatty]: https://donatty.com/sergosokin
+
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="https://i.ibb.co/LkgNvzG/paypal-badge.gif" >
 </a>  
 
 <a href="https://yoomoney.ru/to/410011149615582">
-  <img width="160" height="49" src="https://i.ibb.co/R906WmF/yandex-badge.gif" >
+  <img width="160" height="49" src="https://i.ibb.co/6s5DFCd/yoomoney-badge.gif" >
 </a>
 
-## Adobe Illustrator Scripts
+<a href="https://donatty.com/sergosokin">
+  <img width="160" height="49" src="https://i.ibb.co/tcwzLkB/donatty-badge.gif" >
+</a>
+
+## 🖋 Скрипты для Adobe Illustrator
+
+### CenterClipsToArtboards.jsx
+Выравнивает все обтравочные маски (clipping masks) и их содержимое по центру артбордов, на которых они лежат. Также можно выравнивать только выделенные маски по одному артборду. 
+
+![CenterClipsToArtboards](https://i.ibb.co/ykHy3rM/Center-Clips-To-Artboards.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
 
 ### GrayscaleToOpacity.jsx
 Преобразует цвет выбранных объектов в оттенки серого (Grayscale) и устанавливает прозрачность (Opacity) численно равную каналу серого цвета.
@@ -158,7 +173,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-## Adobe Photoshop Scripts
+## 🖌 Скрипты для Adobe Photoshop
 
 ### ClearLayer.jsx
 Скрипт удаляет видимое содержимое выбранного слоя. Заменяет ручные команды: выделить всё и очистить.

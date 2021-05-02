@@ -29,20 +29,34 @@ I recommend the [Scripshon Trees] or [LAScripts] panel. In it you can specify wh
 [Scripshon Trees]: https://exchange.adobe.com/creativecloud.details.15873.scripshon-trees.html
 [LAScripts]: https://ladygin.pro/products/lascripts/
 
-### Donate (optional)
-If you find this script helpful, you can buy me a coffee ☕️ via [PayPal] or [ЮMoney] 🙂  
+### 💸 Donate (optional)
+If you find this script helpful, you can buy me a coffee ☕️ via [PayPal], [ЮMoney] or [Donatty] 🙂  
 
 [PayPal]: https://paypal.me/osokin/2usd
 [ЮMoney]: https://yoomoney.ru/to/410011149615582
+[Donatty]: https://donatty.com/sergosokin
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="https://i.ibb.co/LkgNvzG/paypal-badge.gif" >
 </a>  
 
 <a href="https://yoomoney.ru/to/410011149615582">
-  <img width="160" height="49" src="https://i.ibb.co/R906WmF/yandex-badge.gif" >
+  <img width="160" height="49" src="https://i.ibb.co/6s5DFCd/yoomoney-badge.gif" >
 </a>
 
-## Adobe Illustrator Scripts
+<a href="https://donatty.com/sergosokin">
+  <img width="160" height="49" src="https://i.ibb.co/tcwzLkB/donatty-badge.gif" >
+</a>
+
+## 🖋 Adobe Illustrator Scripts
+
+### CenterClipsToArtboards.jsx
+Align the clip groups and their contents to the center of the parent artboards. You can also align all the selected clip groups on a single artboard. 
+
+![CenterClipsToArtboards](https://i.ibb.co/ykHy3rM/Center-Clips-To-Artboards.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
 
 ### GrayscaleToOpacity.jsx
 Convert selection colors to Grayscale and set identical Opacity value.
@@ -159,7 +173,7 @@ Syncs the names of the same global colors between open documents. After that, al
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-## Adobe Photoshop Scripts
+## 🖌 Adobe Photoshop Scripts
 
 ### ClearLayer.jsx
 Simple script to clear layers content.
