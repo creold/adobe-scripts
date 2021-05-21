@@ -37,7 +37,7 @@
 
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="https://i.ibb.co/LkgNvzG/paypal-badge.gif" >
-</a>  
+</a>
 
 <a href="https://yoomoney.ru/to/410011149615582">
   <img width="160" height="49" src="https://i.ibb.co/6s5DFCd/yoomoney-badge.gif" >
@@ -49,16 +49,16 @@
 
 ## 🖋 Скрипты для Adobe Illustrator
 
-### CenterClipsToArtboards.jsx
+### CenterClipsToArtboards
 Выравнивает все обтравочные маски (clipping masks) и их содержимое по центру артбордов, на которых они лежат. Также можно выравнивать только выделенные маски по одному артборду. 
 
 ![CenterClipsToArtboards](https://i.ibb.co/ykHy3rM/Center-Clips-To-Artboards.gif) 
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### GrayscaleToOpacity.jsx
+### GrayscaleToOpacity
 Преобразует цвет выбранных объектов в оттенки серого (Grayscale) и устанавливает прозрачность (Opacity) численно равную каналу серого цвета.
 
 ![GrayscaleToOpacity](https://i.ibb.co/DVfGtkz/Grayscale-To-Opacity.gif) 
@@ -67,7 +67,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### MoveArtboards.jsx
+### MoveArtboards
 Перемещает все артборды из диапазона по номерам с содержимым по осям X и Y на точное расстояние.
 
 ![MoveArtboards](https://i.ibb.co/wrHTpTG/Move-Artboards.gif) 
@@ -76,7 +76,16 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### NumeratesPoints.jsx
+### MoveToGroup
+Если выделенные объекты содержат группу, то перемещает все объекты в нее. Порядок сохраняется: объекты выше группы помещаются внутри наверх, нижние — вниз группы. Если групп несколько, то выбирается в диалоге куда переместить: в верхнюю или нижюю.
+
+![MoveToGroup](https://i.ibb.co/jkD5Zx4/Move-To-Group.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
+</a>
+
+### NumeratesPoints
 Нумерует выделенные точки и помечает их круглыми маркерами. Пригодится, например, для создания рисунков в стиле «Соедини по точкам (цифрам)».
 
 ![NumeratesPoints](https://i.ibb.co/bdJ8tvV/Numerates-Points.gif) 
@@ -85,7 +94,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### ObjectsCounter.jsx
+### ObjectsCounter
 Подсчитывает количество выделенных объектов. Группы не учитываются, как отдельный объект, только вложенные в них элементы.
 
 ![ObjectsCounter](https://i.ibb.co/bFd5k6p/Objects-Counter.gif)  
@@ -94,7 +103,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### OpacityMaskClip.jsx
+### OpacityMaskClip
 Активирует чекбокс `Clip` в панели `Transparency > Opacity Mask` для выделенных объектов с масками прозрачности.
 
 ![OpacityMaskClip](https://i.ibb.co/k0CBJKq/Opacity-Mask-Clip.gif)  
@@ -103,7 +112,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### RenameArtboardAsLayer.jsx
+### RenameArtboardAsLayer
 Переименовывает каждый артборд по имени слоя, в котором есть элемент, лежащий на соответствующем артборде.
 
 ![RenameArtboardAsLayer](https://i.ibb.co/9nk8Lqn/Rename-Artboard-As-Layer.gif)
@@ -112,7 +121,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### RenameArtboardAsSize.jsx
+### RenameArtboardAsSize
 Скрипт ставит в имя артборда его размер в пикселях. Если не хотите сохранять старое имя, а только менять на размер, то откройте файл скрипта текстовым редактором и поменяйте значение в строке `var SAVE_NAME = true;` на `false`.     
 
 ![RenameArtboardAsSize](https://i.ibb.co/54H4Jcm/Rename-Artboard-As-Size.gif)
@@ -121,7 +130,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### RoundCoordinates.jsx
+### RoundCoordinates
 Округляет координаты центра объекта. Учитывает единицы измерения документа.
 
 ![RoundCoordinates](https://i.ibb.co/jMy4YzT/Round-Coordinates.gif)
@@ -130,7 +139,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### RenameArtboardAsTopObj.jsx
+### RenameArtboardAsTopObj
 Переименовывает каждый артборд по имени верхнего по иерархии объекта, лежащий на соответствующем артборде.
 
 ![RenameArtboardAsTopObj](https://i.ibb.co/4RGWddG/Rename-Artboard-As-Top-Obj.gif)
@@ -139,7 +148,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### ResizeOnLargerSide.jsx
+### ResizeOnLargerSide
 Трансформирует выбранные объекты пропорционально до заданной величины бОльшей стороны. Её скрипт определяет автоматически. Учитывает единицы измерения документа.   
 
 ![ResizeOnLargerSide](https://i.ibb.co/1bSj1kC/Resize-On-Larger-Side.gif)
@@ -148,7 +157,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### ReverseGradientColor.jsx
+### ReverseGradientColor
 Зеркально переворачивает цвета градиента: каждую точку (Color stop) вместе с прозрачностью. Само расположение точек сохраняется. Если градиент скопирован с другого объекта пипеткой (Eyedropper Tool), то Illustrator хранит связь между ним. В таком случае запуск скрипта приведет к разворачиванию всех скопированных градиентов. В таком случае, возможно, лучше использовать кнопку `Reverse Gradient` в стандартной панели Gradient.   
 
 ![ReverseGradient](https://i.ibb.co/Fg8nnHZ/Reverse-Gradient-Color.gif)
@@ -157,14 +166,14 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### SaveAllDocs.jsx
+### SaveAllDocs
 Сохраняет все открытые документы.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
-### SyncGlobalColorsNames.jsx
+### SyncGlobalColorsNames
 Синхронизирует имена совпадающих глобальных цветов между всеми открытыми документами. После синронизации сохраняет изменения.
 
 ![SyncGlobalColorsNames](https://i.ibb.co/G9NRF7J/Sync-Global-Colors-Names.gif)
@@ -175,7 +184,7 @@
 
 ## 🖌 Скрипты для Adobe Photoshop
 
-### ClearLayer.jsx
+### ClearLayer
 Скрипт удаляет видимое содержимое выбранного слоя. Заменяет ручные команды: выделить всё и очистить.
 
 ![ClearLayer](https://i.ibb.co/hV7NFxB/Clear-Layer.gif) 
@@ -184,7 +193,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a> 
 
-### GeneratePreview.jsx
+### GeneratePreview
 Сохраняет JPG активного документа. При повторном запуске на документе может сохранять под новым номером, например, чтобы сохранять в множестве JPG разное состояние документа. Если хотите изменить размер JPG, откройте файл скрипта текстовым редактором и замените число в пикселях `var jpegSizeMax = 1200;`. Это размер бОльшей стороны, которую скрипт автоматически определит и сохранит пропорционально.
 
 ![ClearLayer](https://i.ibb.co/HrcPNvs/Generate-Preview.gif) 
@@ -193,7 +202,7 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a> 
 
-### SaveAll.jsx
+### SaveAll
 Сохраняет все открытые документы.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">

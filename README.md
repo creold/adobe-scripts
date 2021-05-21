@@ -37,7 +37,7 @@ If you find this script helpful, you can buy me a coffee ☕️ via [PayPal], [�
 [Donatty]: https://donatty.com/sergosokin
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="https://i.ibb.co/LkgNvzG/paypal-badge.gif" >
-</a>  
+</a>
 
 <a href="https://yoomoney.ru/to/410011149615582">
   <img width="160" height="49" src="https://i.ibb.co/6s5DFCd/yoomoney-badge.gif" >
@@ -49,7 +49,7 @@ If you find this script helpful, you can buy me a coffee ☕️ via [PayPal], [�
 
 ## 🖋 Adobe Illustrator Scripts
 
-### CenterClipsToArtboards.jsx
+### CenterClipsToArtboards
 Align the clip groups and their contents to the center of the parent artboards. You can also align all the selected clip groups on a single artboard. 
 
 ![CenterClipsToArtboards](https://i.ibb.co/ykHy3rM/Center-Clips-To-Artboards.gif) 
@@ -58,7 +58,7 @@ Align the clip groups and their contents to the center of the parent artboards. 
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### GrayscaleToOpacity.jsx
+### GrayscaleToOpacity
 Convert selection colors to Grayscale and set identical Opacity value.
 
 ![GrayscaleToOpacity](https://i.ibb.co/DVfGtkz/Grayscale-To-Opacity.gif) 
@@ -67,7 +67,7 @@ Convert selection colors to Grayscale and set identical Opacity value.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### MoveArtboards.jsx
+### MoveArtboards
 Script for moving artboards range with artwork along the X and Y axis.
 
 ![MoveArtboards](https://i.ibb.co/wrHTpTG/Move-Artboards.gif) 
@@ -76,7 +76,16 @@ Script for moving artboards range with artwork along the X and Y axis.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### NumeratesPoints.jsx
+### MoveToGroup
+If the selected objects contain a group, it moves all the objects into it. The order is preserved: the objects above the group are placed inside at the top, the lower ones at the bottom of the group. If there are several groups, you choose in the dialog box where to move: to the top or to the bottom group.
+
+![MoveToGroup](https://i.ibb.co/jkD5Zx4/Move-To-Group.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
+
+### NumeratesPoints
 Numerates selected points and marks them with colored circles.
 
 ![NumeratesPoints](https://i.ibb.co/bdJ8tvV/Numerates-Points.gif) 
@@ -85,7 +94,7 @@ Numerates selected points and marks them with colored circles.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### ObjectsCounter.jsx
+### ObjectsCounter
 Counts the number of selected objects.
 
 ![ObjectsCounter](https://i.ibb.co/bFd5k6p/Objects-Counter.gif)  
@@ -94,7 +103,7 @@ Counts the number of selected objects.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### OpacityMaskClip.jsx
+### OpacityMaskClip
 The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
 
 ![OpacityMaskClip](https://i.ibb.co/k0CBJKq/Opacity-Mask-Clip.gif)  
@@ -103,7 +112,7 @@ The script activates `Clip` checkbox in `Transparency > Opacity Mask`.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### RenameArtboardAsLayer.jsx
+### RenameArtboardAsLayer
 The script renames each Artboard by the custom name of Layer with the first visible unlocked item on it.
 
 ![RenameArtboardAsLayer](https://i.ibb.co/9nk8Lqn/Rename-Artboard-As-Layer.gif)
@@ -112,7 +121,7 @@ The script renames each Artboard by the custom name of Layer with the first visi
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### RenameArtboardAsSize.jsx
+### RenameArtboardAsSize
 The script names the artboard by its size in pixels. If you don't want save Artboard name, but replace with his size, change `var SAVE_NAME = true;` in the script file to `false`   
 
 ![RenameArtboardAsSize](https://i.ibb.co/54H4Jcm/Rename-Artboard-As-Size.gif)
@@ -121,7 +130,7 @@ The script names the artboard by its size in pixels. If you don't want save Artb
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### RoundCoordinates.jsx
+### RoundCoordinates
 The script rounds the coordinates of the center of the object. Works with document units.
 
 ![RoundCoordinates](https://i.ibb.co/jMy4YzT/Round-Coordinates.gif)
@@ -130,7 +139,7 @@ The script rounds the coordinates of the center of the object. Works with docume
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### RenameArtboardAsTopObj.jsx
+### RenameArtboardAsTopObj
 The script renames each Artboard by the custom name of the first visible unlocked item on it.
 
 ![RenameArtboardAsTopObj](https://i.ibb.co/4RGWddG/Rename-Artboard-As-Top-Obj.gif)
@@ -139,7 +148,7 @@ The script renames each Artboard by the custom name of the first visible unlocke
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### ResizeOnLargerSide.jsx
+### ResizeOnLargerSide
 Resize of the selected objects to the specified amount on the larger side. Works with document units.   
 
 ![ResizeOnLargerSide](https://i.ibb.co/1bSj1kC/Resize-On-Larger-Side.gif)
@@ -148,7 +157,7 @@ Resize of the selected objects to the specified amount on the larger side. Works
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### ReverseGradientColor.jsx
+### ReverseGradientColor
 Reverse the order of gradient colors and their opacity. Does not reverse the locations of color stops. If a gradient is copied from another object with the Eyedropper Tool (I), the Illustrator will think that they have the same gradient. Use the Reverse Gradient button in the Gradient panel instead then.   
 
 ![ReverseGradient](https://i.ibb.co/Fg8nnHZ/Reverse-Gradient-Color.gif)
@@ -157,14 +166,14 @@ Reverse the order of gradient colors and their opacity. Does not reverse the loc
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### SaveAllDocs.jsx
+### SaveAllDocs
 Save all opened docs in one click.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
-### SyncGlobalColorsNames.jsx
+### SyncGlobalColorsNames
 Syncs the names of the same global colors between open documents. After that, all changes will be saved.
 
 ![SyncGlobalColorsNames](https://i.ibb.co/G9NRF7J/Sync-Global-Colors-Names.gif)
@@ -175,7 +184,7 @@ Syncs the names of the same global colors between open documents. After that, al
 
 ## 🖌 Adobe Photoshop Scripts
 
-### ClearLayer.jsx
+### ClearLayer
 Simple script to clear layers content.
 
 ![ClearLayer](https://i.ibb.co/hV7NFxB/Clear-Layer.gif) 
@@ -184,7 +193,7 @@ Simple script to clear layers content.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a> 
 
-### GeneratePreview.jsx
+### GeneratePreview
 Generate JPG preview image from active document. Supports multiple saving with auto-numbering. If you want to change JPG size, edit number in script file `var jpegSizeMax = 1200;` .
 
 ![ClearLayer](https://i.ibb.co/HrcPNvs/Generate-Preview.gif) 
@@ -193,7 +202,7 @@ Generate JPG preview image from active document. Supports multiple saving with a
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a> 
 
-### SaveAll.jsx
+### SaveAll
 Save all opened docs in one click.
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ps">
