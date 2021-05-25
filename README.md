@@ -58,6 +58,15 @@ Align the clip groups and their contents to the center of the parent artboards. 
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
+### ExportToDXF
+Export multiple artboards with visible unlocked contents or selection to separate DXF files for CAD systems. 
+
+![ExportToDXF](https://i.ibb.co/xqhxjp0/Export-To-DXF.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
+
 ### GrayscaleToOpacity
 Convert selection colors to Grayscale and set identical Opacity value.
 

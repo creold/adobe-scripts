@@ -58,6 +58,15 @@
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
 </a>
 
+### ExportToDXF
+Экспортирует выбранные артборды с видимыми незаблокированными объектами или выделенные объекты в отдельные файлы DXF для CAD-систем. 
+
+![ExportToDXF](https://i.ibb.co/xqhxjp0/Export-To-DXF.gif) 
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
+</a>
+
 ### GrayscaleToOpacity
 Преобразует цвет выбранных объектов в оттенки серого (Grayscale) и устанавливает прозрачность (Opacity) численно равную каналу серого цвета.
 
