@@ -32,9 +32,10 @@ I recommend the [Scripshon Trees] or [LAScripts] panel. In it you can specify wh
 ### 💸 Donate (optional)
 If you find this script helpful, you can buy me a coffee ☕️ via [PayPal], [ЮMoney] or [Donatty] 🙂  
 
-[PayPal]: https://paypal.me/osokin/2usd
+[PayPal]: https://paypal.me/osokin/3usd
 [ЮMoney]: https://yoomoney.ru/to/410011149615582
 [Donatty]: https://donatty.com/sergosokin
+
 <a href="https://paypal.me/osokin/3usd">
   <img width="160" height="49" src="https://i.ibb.co/LkgNvzG/paypal-badge.gif" >
 </a>
@@ -182,13 +183,23 @@ Save all opened docs in one click.
   <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
+
+### SelectBySwatches
+The Magic Wand tool selects objects that match the color of the sample. Selecting samples with the <kbd>Shift</kbd> key will select items of different colors.  The script will select items if a fill color matches the colors selected in the Swatches panel.
+
+![SelectBySwatches](https://i.ibb.co/jVsVzKv/Select-By-Swatches.gif)
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
+</a>
+
 ### SyncGlobalColorsNames
 Syncs the names of the same global colors between open documents. After that, all changes will be saved.
 
 ![SyncGlobalColorsNames](https://i.ibb.co/G9NRF7J/Sync-Global-Colors-Names.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
-  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
+  <img width="160" height="49" src="https://i.ibb.co/CVHgrFk/download-en.png">
 </a>
 
 ## 🖌 Adobe Photoshop Scripts

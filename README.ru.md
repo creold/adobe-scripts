@@ -31,7 +31,7 @@
 ### 💸 Поддержка (по желанию)
 Вы можете поддержать мою работу над новыми скриптами и их распространение любой суммой через [PayPal], [ЮMoney] или [Donatty] 🙂  
 
-[PayPal]: https://paypal.me/osokin/2usd
+[PayPal]: https://paypal.me/osokin/3usd
 [ЮMoney]: https://yoomoney.ru/to/410011149615582
 [Donatty]: https://donatty.com/sergosokin
 
@@ -177,6 +177,15 @@
 
 ### SaveAllDocs
 Сохраняет все открытые документы.
+
+<a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
+  <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
+</a>
+
+### SelectBySwatches
+Инструмент Magic Wand выделяет объекты, совпадающие по цвету с образцом. Выбирая образцы с  зажатой клавишей <kbd>Shift</kbd>, выделяются объекты разных цветов. Скрипт же выделит объекты, заливка которых совпадает с цветами, выбранными в панели Swatches.
+
+![SelectBySwatches](https://i.ibb.co/jVsVzKv/Select-By-Swatches.gif)
 
 <a href="https://downgit.github.io/#/home?url=https://github.com/creold/adobe-scripts/tree/master/ai">
   <img width="160" height="49" src="https://i.ibb.co/ZW07Fw4/download-ru.png">
